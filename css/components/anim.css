@@ -1,0 +1,166 @@
+/* ================ right ================== */
+.anim--right {
+	opacity: 0;
+	transform: translate(-50%, 0%);
+}
+.--animate .anim--right {
+	animation: fadeRight 2.0s forwards;
+}
+@keyframes fadeRight {
+	0% { opacity: 0; transform: translate(-50%, 0%); }
+	100% { opacity: 1; transform: translate(0, 0); }
+}
+
+/* ================ left ================== */
+.anim--left {
+	opacity: 0;
+	transform: translate(50%, 0%);
+}
+.--animate .anim--left {
+	animation: fadeLeft 1.5s forwards;
+}
+@keyframes fadeLeft {
+	0% { opacity: 0; transform: translate(50%, 0%); }
+	100% { opacity: 1; transform: translate(0, 0); }
+}
+
+/* ================ up ================== */
+.anim--up {
+	opacity: 0;
+	transform: translate(0, 50%);
+}
+.--animate .anim--up {
+	animation: fadeUp 1.5s forwards;
+}
+@keyframes fadeUp {
+	0% { opacity: 0; transform: translate(0, 50%); }
+	100% { opacity: 1; transform: translate(0, 0); }
+}
+
+/* ================ down ================== */
+.anim--down {
+	opacity: 0;
+	transform: translate(0, -50%);
+}
+.--animate .anim--down {
+	animation: fadeDown 1.5s forwards;
+}
+@keyframes fadeDown {
+	0% { opacity: 0; transform: translate(0, -50%); }
+	100% { opacity: 1; transform: translate(0, 0); }
+}
+
+/* ================ zoom ================== */
+.anim--zoom {
+	opacity: 0.5;
+	transform: scale(0);
+}
+.--animate .anim--zoom {
+	animation: zoomIn 1.5s forwards;
+}
+@keyframes zoomIn {
+	0% { opacity: 0.5; transform: scale(0); }
+	100% { opacity: 1; transform: scale(1); }
+}
+
+/* =================== delay =================== */
+.anim--delay {
+	opacity: 0.5;
+	transform: scale(0);
+}
+.--animate .anim--delay {
+	animation: zoomIn 1.5s forwards;
+}
+.--animate .anim--delay:nth-child(1) { animation-delay: 0s; }
+.--animate .anim--delay:nth-child(2) { animation-delay: 0.3s; }
+.--animate .anim--delay:nth-child(3) { animation-delay: 0.5s; }
+.--animate .anim--delay:nth-child(4) { animation-delay: 0.7s; }
+.--animate .anim--delay:nth-child(5) { animation-delay: 0.9s; }
+.--animate .anim--delay:nth-child(6) { animation-delay: 1.1s; }
+
+/* =================== delay-up =================== */
+.anim--delay-up {
+	opacity: 0;
+	transform: translate(0, 3.125rem);
+}
+.--animate .anim--delay-up {
+	animation: fadeUp 1.5s forwards;
+}
+.--animate .anim--delay-up:nth-child(1) { animation-delay: 0.5s; }
+.--animate .anim--delay-up:nth-child(2) { animation-delay: 0.7s; }
+.--animate .anim--delay-up:nth-child(3) { animation-delay: 0.9s; }
+.--animate .anim--delay-up:nth-child(4) { animation-delay: 1.1s; }
+.--animate .anim--delay-up:nth-child(5) { animation-delay: 1.3s; }
+.--animate .anim--delay-up:nth-child(6) { animation-delay: 1.5s; }
+
+/* =================== delay-down =================== */
+.anim--delay-down {
+	opacity: 0;
+	transform: translate(0, -3.125rem);
+}
+.--animate .anim--delay-down {
+	animation: fadeDown 1.5s forwards;
+}
+.--animate .anim--delay-down:nth-child(1) { animation-delay: 0.5s; }
+.--animate .anim--delay-down:nth-child(2) { animation-delay: 0.7s; }
+.--animate .anim--delay-down:nth-child(3) { animation-delay: 0.9s; }
+.--animate .anim--delay-down:nth-child(4) { animation-delay: 1.1s; }
+.--animate .anim--delay-down:nth-child(5) { animation-delay: 1.3s; }
+.--animate .anim--delay-down:nth-child(6) { animation-delay: 1.5s; }
+
+/* =================== delay-left =================== */
+.anim--delay-left {
+	opacity: 0;
+	transform: translate(3.125rem, 0);
+}
+.--animate .anim--delay-left {
+	animation: fadeLeft 1.5s forwards;
+}
+.--animate .anim--delay-left:nth-child(1) { animation-delay: 0.5s; }
+.--animate .anim--delay-left:nth-child(2) { animation-delay: 0.7s; }
+.--animate .anim--delay-left:nth-child(3) { animation-delay: 0.9s; }
+.--animate .anim--delay-left:nth-child(4) { animation-delay: 1.1s; }
+.--animate .anim--delay-left:nth-child(5) { animation-delay: 1.3s; }
+.--animate .anim--delay-left:nth-child(6) { animation-delay: 1.5s; }
+
+/* =================== delay-right =================== */
+.anim--delay-right {
+	opacity: 0;
+	transform: translate(-3.125rem, 0);
+}
+.--animate .anim--delay-right {
+	animation: fadeRight 1.5s forwards;
+}
+.--animate .anim--delay-right:nth-child(1) { animation-delay: 0.5s; }
+.--animate .anim--delay-right:nth-child(2) { animation-delay: 0.7s; }
+.--animate .anim--delay-right:nth-child(3) { animation-delay: 0.9s; }
+.--animate .anim--delay-right:nth-child(4) { animation-delay: 1.1s; }
+.--animate .anim--delay-right:nth-child(5) { animation-delay: 1.3s; }
+.--animate .anim--delay-right:nth-child(6) { animation-delay: 1.5s; }
+
+/* =============== anim--rotate ================== */
+.anim--rotate {
+	animation: rotate 70s infinite linear !important;
+}
+@keyframes rotate {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+/* =============== anim--rotate-rev ================== */
+.anim--rotate-rev {
+	animation: rotate-rev 70s infinite linear !important;
+}
+@keyframes rotate-rev {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(-360deg); }
+}
+
+/* =============== anti-rotate ================== */
+@keyframes anti-rotate {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(-360deg); }
+}
+.anti-rotate {
+	animation: anti-rotate 70s infinite linear;
+}

@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
+@import "../css/burger.css";
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: clip;
+}
+
+.wrapper > main {
+  flex-grow: 1;
+}
+
+[class*=__container] {
+  max-inline-size: 82.75rem;
+  margin-inline: auto;
+  padding-inline: 0.9375rem;
+}
+
+:root {
+  --font-family: "Montserrat", sans-serif;
+  --primary: #d9d9d9;
+  --background: #121517;
+  --background-gradient: linear-gradient(263.46deg, #237249 1.41%, #35c66b 85.05%);
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--primary);
+  background-color: var(--background);
+  font-size: calc(16px + 4 * (100vw - 320px) / 1192);
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: var(--background);
+  transition: all 0.5s;
+}
+.header__container {
+  display: flex;
+  align-items: center;
+  gap: calc(20px + 75 * (100vw - 320px) / 1192);
+  min-height: calc(80px + 55 * (100vw - 320px) / 1192);
+  padding-block: calc(34px + 14 * (100vw - 320px) / 1192);
+  padding-inline: calc(24px + 14 * (100vw - 320px) / 1192);
+}
+@media (max-width: 47.9988rem) {
+  .header__container {
+    justify-content: space-between;
+  }
+}
+.header__logo {
+  font-weight: 800;
+  font-size: calc(22px + 15 * (100vw - 320px) / 1192);
+  line-height: 1.09;
+  letter-spacing: -0.03em;
+  background: var(--background-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: 10;
+  transition: filter 0.4s ease;
+}
+.header__logo:hover {
+  filter: drop-shadow(0 0 0.75rem rgba(53, 198, 107, 0.6));
+}
+.menu-header__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: calc(40px + 55 * (100vw - 320px) / 1192);
+}
+@media (max-width: 47.9988rem) {
+  .menu-header__list {
+    flex-direction: column;
+    align-items: end;
+  }
+}
+.menu-header__item {
+  font-size: 1.1875rem;
+  text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+.menu-header__item a {
+  transition: color 0.5s ease;
+  color: var(--primary);
+}
+.menu-header__item a:hover {
+  color: #35c66b;
+}
+@media (max-width: 47.9988rem) {
+  .menu-header__item {
+    font-size: 24px;
+  }
+}

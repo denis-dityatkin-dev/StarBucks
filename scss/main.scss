@@ -1,0 +1,169 @@
+﻿// Подключение шрифтов только в самом верху
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
+// @import url("../css/fonts.css");
+// @import url("../css/icons-fonts.css");
+// @import '../css/components/components.css';
+// @import "../css/components/anim.css";
+// @import "../scss/components/ibj.scss";
+// @import "../scss/components/adaptive-font";
+@import "../css/burger.css";
+// @import "/scss/burger.scss";
+// $maxWidth: 1280;
+// @include adaptive-font(40, 24);(Использовать для адаптивного шрифта: 1 - мах знач, 2 - мин знач.)
+@import "../scss/adaptive-value.scss";
+// @include adaptive-value("padding", 40, 24, 0);(Использовать для адаптивного шрифта: 1 - мах знач, 2 - мин знач., 3 - режим)
+$maxWidth: 1512;
+$maxWidthContainer: 1324;
+// max-width(1170px){}
+// max-width(991.98px){}
+// max-width(767.98px){}
+// max-width(479.98px){}
+// чтоб перевести в rem, нужно ..px / 16px
+// :root {
+// 	--text-default: #101010;
+// 	--text-primary: #db574d;
+// 	--text-muted: rgba(16, 16, 16, 0.6);
+// 	--text-inverse: #fff;
+// }
+// color: var(--text-default);
+.wrapper {
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	overflow: clip; // работает с position: sticky;
+	// min-width: 320px;
+	// max-width: 1920px;
+	//block-size: 100%;
+}
+// ==== Чтоб прибить футер к низу разрешаем main расширяться
+
+.wrapper > main {
+	flex-grow: 1;
+}
+
+// ===============Ограничивающий контейнер через селктор класса============
+[class*="__container"] {
+	max-inline-size: 82.75rem;
+	margin-inline: auto;
+	padding-inline: 0.9375rem;
+
+	// max-width: 1230px;
+	// margin: 0 auto;
+	// padding: 0 15px;
+	// box-sizing: border-box;
+
+	// ======== Стандартная адаптивная сетка ================================
+	// @media (max-width: 1199.98px) {
+	//   max-width: 970px;
+	// }
+	// @media (max-width: 991.98px) {
+	//   max-width: 750px;
+	// }
+	// @media (max-width: 767.98px) {
+	//   max-width: none;
+	// }
+}
+:root {
+	--font-family: "Montserrat", sans-serif;
+	--primary: #d9d9d9;
+	--background: #121517;
+	--background-gradient: linear-gradient(263.46deg, #237249 1.41%, #35c66b 85.05%);
+}
+
+body {
+	font-family: var(--font-family);
+	color: var(--primary);
+	background-color: var(--background);
+	@include adaptive-value("font-size", 20, 16, 0);
+}
+
+.header {
+	// .header__container
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	background-color: var(--background);
+	transition: all 0.5s;
+	&__container {
+		display: flex;
+		align-items: center;
+
+		@include adaptive-value("gap", 95, 20, 0);
+		@include adaptive-value("min-height", 135, 80, 0);
+		@include adaptive-value("padding-block", 48, 34, 0);
+		@include adaptive-value("padding-inline", 38, 24, 0);
+		@media (max-width: 47.9988rem) {
+			justify-content: space-between;
+		}
+	}
+
+	// .header__logo
+
+	&__logo {
+		font-weight: 800;
+		@include adaptive-value("font-size", 37, 22, 0);
+		line-height: 1.09;
+		letter-spacing: -0.03em;
+		background: var(--background-gradient);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		z-index: 10;
+		transition: filter 0.4s ease;
+		&:hover {
+			filter: drop-shadow(0 0 0.75rem rgba(53, 198, 107, 0.6));
+		}
+	}
+
+	// .header__menu
+
+	&__menu {
+	}
+
+	// .header__actions
+
+	&__actions {
+	}
+}
+
+.menu-header {
+	// .menu-header__body
+
+	&__body {
+	}
+
+	// .menu-header__list
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		@include adaptive-value("gap", 95, 40, 0);
+		@media (max-width: 47.9988rem) {
+			flex-direction: column;
+			align-items: end;
+		}
+	}
+
+	// .menu-header__item
+
+	&__item {
+		font-size: 1.1875rem;
+		text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+		a {
+			transition: color 0.5s ease;
+			color: var(--primary); // Ваш обычный цвет
+
+			&:hover {
+				color: #35c66b; // Просто зеленый цвет из градиента
+			}
+		}
+		@media (max-width: 47.9988rem) {
+			font-size: 24px;
+		}
+	}
+}
