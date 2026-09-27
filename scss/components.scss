@@ -1,0 +1,42 @@
+// Подключение шрифтов только в самом верху
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
+
+@import "../css/burger.css";
+@import "../css/main.css";
+@import "../scss/adaptive-value.scss";
+
+$maxWidth: 1512;
+$maxWidthContainer: 1324;
+
+.wrapper {
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	overflow: clip; // работает с position: sticky;
+
+}
+// ==== Чтоб прибить футер к низу разрешаем main расширяться
+
+.wrapper > main {
+	flex-grow: 1;
+}
+
+// ===============Ограничивающий контейнер через селктор класса============
+[class*="__container"] {
+	max-inline-size: 82.75rem;
+	margin-inline: auto;
+	padding-inline: 0.9375rem;
+}
+:root {
+	--font-family: "Montserrat", sans-serif;
+	--primary: #d9d9d9;
+	--background: #121517;
+	--background-gradient: linear-gradient(263.46deg, #237249 1.41%, #35c66b 85.05%);
+}
+
+body {
+	font-family: var(--font-family);
+	color: var(--primary);
+	background-color: var(--background);
+	@include adaptive-value("font-size", 20, 16, 0);
+}
