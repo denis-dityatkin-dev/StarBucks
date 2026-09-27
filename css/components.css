@@ -21,6 +21,7 @@
 :root {
   --font-family: "Montserrat", sans-serif;
   --primary: #d9d9d9;
+  --white: #fff;
   --background: #121517;
   --background-gradient: linear-gradient(263.46deg, #237249 1.41%, #35c66b 85.05%);
 }
@@ -30,4 +31,66 @@ body {
   color: var(--primary);
   background-color: var(--background);
   font-size: calc(16px + 4 * (100vw - 320px) / 1192);
+}
+
+.header-block__container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.block__header {
+  display: grid;
+  gap: calc(20px + 34 * (100vw - 320px) / 1192);
+}
+@media (min-width: 47.9988rem) {
+  .block__header--row {
+    display: flex;
+    align-items: center;
+    gap: calc(20px + 52 * (100vw - 320px) / 1192);
+  }
+}
+@media (min-width: 47.9988rem) {
+  .block__header--row-rev {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: calc(20px + 52 * (100vw - 320px) / 1192);
+  }
+}
+.title {
+  font-weight: 800;
+  font-size: calc(42px + 38 * (100vw - 320px) / 1192);
+  line-height: 1.09;
+  letter-spacing: -0.03em;
+  color: var(--white);
+}
+.title span {
+  background: var(--background-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@media (max-width: 47.9988rem) {
+  .title br {
+    display: none;
+  }
+}
+
+.text {
+  line-height: 1.63;
+  letter-spacing: -0.02em;
+}
+.text P:not(:last-child) {
+  margin-bottom: 0.625rem;
+}
+@media (max-width: 47.9988rem) {
+  .text br {
+    display: none;
+  }
+}
+@media (min-width: 47.9988rem) {
+  .text--row {
+    max-width: 26.875rem;
+  }
 }
