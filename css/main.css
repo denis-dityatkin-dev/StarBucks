@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
-@import "../css/burger.css";
+@import "../css/components/font-icons.css";
+@import "../css/burgers.css";
 @import "../css/components.css";
 .wrapper {
   min-height: 100%;
