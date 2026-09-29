@@ -94,3 +94,54 @@ body {
     max-width: 26.875rem;
   }
 }
+
+.buttons-block__button {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: start;
+  gap: 1.875rem;
+}
+@media (max-width: 47.9988rem) {
+  .buttons-block__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+}
+
+.button {
+  padding-inline: calc(20px + 58 * (100vw - 320px) / 1192);
+  padding-block: 1.25rem;
+  font-size: calc(20px + 4 * (100vw - 320px) / 1192);
+  line-height: 1.46;
+  border-radius: 5.1875rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  background: var(--background-gradient);
+  transition: box-shadow 0.4s, transform 0.4s;
+}
+.button:hover {
+  box-shadow: 0 0 20px rgba(53, 198, 107, 0.7), 0 0 40px rgba(53, 198, 107, 0.4);
+}
+@media (max-width: 47.9988rem) {
+  .button {
+    width: 100%;
+  }
+}
+
+.button--dark {
+  padding-inline: calc(20px + 34 * (100vw - 320px) / 1192);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  background-color: var(--background);
+  background: transparent;
+  border: 0.0625rem solid var(--primary);
+  transition: all 0.5s;
+}
+.button--dark:hover {
+  color: var(--background);
+  background-color: var(--primary);
+}
