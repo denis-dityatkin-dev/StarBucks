@@ -1,7 +1,5 @@
 // Подключение шрифтов только в самом верху
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
-
-@import "../css/burger.css";
 @import "../css/main.css";
 @import "../scss/adaptive-value.scss";
 
@@ -151,6 +149,7 @@ body {
 .button {
 	@include adaptive-value("padding-inline", 78, 20, 0);
 	padding-block: 1.25rem;
+	max-height: 4.6875rem;
 
 	@include adaptive-value("font-size", 24, 20, 0);
 	line-height: 1.46;
@@ -162,12 +161,15 @@ body {
 	color: var(--white);
 	background: var(--background-gradient);
 
-transition: box-shadow 0.4s, transform 0.4s;
+	transition:
+		box-shadow 0.4s,
+		transform 0.4s;
 
-  &:hover {
-    box-shadow: 0 0 20px rgba(53, 198, 107, 0.7),
-                0 0 40px rgba(53, 198, 107, 0.4);
-  }
+	&:hover {
+		box-shadow:
+			0 0 20px rgba(53, 198, 107, 0.7),
+			0 0 40px rgba(53, 198, 107, 0.4);
+	}
 
 	@media (max-width: 47.9988rem) {
 		width: 100%;
@@ -181,8 +183,21 @@ transition: box-shadow 0.4s, transform 0.4s;
 	background: transparent;
 	border: 0.0625rem solid var(--primary);
 	transition: all 0.5s;
-	&:hover{
+	&:hover {
 		color: var(--background);
 		background-color: var(--primary);
 	}
+}
+
+
+.button--buy {
+	@include adaptive-value("padding-inline", 38, 20, 0);
+	padding-block: 0.875rem;
+	max-height: 3.375rem;
+	font-size: 1.0625rem;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 3.75rem;
 }

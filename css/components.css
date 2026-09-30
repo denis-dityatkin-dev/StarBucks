@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
-@import "../css/burger.css";
 @import "../css/main.css";
 .wrapper {
   min-height: 100%;
@@ -114,6 +113,7 @@ body {
 .button {
   padding-inline: calc(20px + 58 * (100vw - 320px) / 1192);
   padding-block: 1.25rem;
+  max-height: 4.6875rem;
   font-size: calc(20px + 4 * (100vw - 320px) / 1192);
   line-height: 1.46;
   border-radius: 5.1875rem;
@@ -144,4 +144,15 @@ body {
 .button--dark:hover {
   color: var(--background);
   background-color: var(--primary);
+}
+
+.button--buy {
+  padding-inline: calc(20px + 18 * (100vw - 320px) / 1192);
+  padding-block: 0.875rem;
+  max-height: 3.375rem;
+  font-size: 1.0625rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3.75rem;
 }
