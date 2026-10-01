@@ -172,6 +172,7 @@ body {
 	}
 
 	@media (max-width: 47.9988rem) {
+	
 		width: 100%;
 	}
 }
@@ -188,7 +189,6 @@ body {
 		background-color: var(--primary);
 	}
 }
-
 
 .button--buy {
 	@include adaptive-value("padding-inline", 38, 20, 0);

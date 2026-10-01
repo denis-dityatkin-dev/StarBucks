@@ -51,7 +51,7 @@ function windowLoad(){
 		});
 	}, options);
 
-	let sections = document.querySelectorAll(".page__section");
+	let sections = document.querySelectorAll(".stats");
 	if(sections.length){
 		sections.forEach(section => {
 			observer.observe(section);

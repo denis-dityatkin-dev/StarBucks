@@ -1,12 +1,12 @@
 ﻿// Подключение шрифтов только в самом верху
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
 
-@import "../css/components/font-icons.css";
-@import "../scss/burgers.scss";
-@import "../css/components.css";
+@import "adaptive-value"; // Импорт локального scss (без расширения)
+@import "font-icons"; // Импорт локального scss (без расширения)
+@import "burgers"; // Импорт локального scss
+@import "components";
 
-@import "../scss/adaptive-value.scss";
-
+$maxWidth: 1512;
 $maxWidthContainer: 1324;
 
 .wrapper {
@@ -14,7 +14,6 @@ $maxWidthContainer: 1324;
 	display: flex;
 	flex-direction: column;
 	overflow: clip; // работает с position: sticky;
-
 }
 // ==== Чтоб прибить футер к низу разрешаем main расширяться
 
@@ -131,5 +130,136 @@ body {
 		@media (max-width: 47.9988rem) {
 			font-size: 24px;
 		}
+	}
+}
+
+// ============ main ===========
+
+.main {
+	@include adaptive-value("padding-top", 169, 100, 0);
+	@include adaptive-value("padding-bottom", 111, 40, 0);
+
+	position: relative; // Важно!
+	overflow: hidden;
+	// .main__container
+
+	&__container {
+		 position: relative;
+		 
+		display: flex;
+		justify-content: space-between;
+		gap: 2rem;
+		@media (max-width: 47.9988rem) {
+			flex-direction: column;
+		}
+	}
+
+	// .main__content
+
+	&__content {
+		
+	}
+	&__header,
+	&__image {
+		position: relative;
+		z-index: 1;
+	}
+	// .main__header
+
+	&__header {
+	
+	}
+
+	// .main__image
+
+	&__image {
+		img {
+			max-width: 100%;
+		}
+	}
+	&__bg-decoration {
+		position: absolute;
+		bottom: -35%;
+		right: -11%;
+		width: 100%;
+		height: 100%;
+		// width: 53.5%; // Подгоните под макет (например, 50% или 800px)
+		// height: 68.9%; // Подгоните под макет
+		background: url("../images/main/main-bg.svg") bottom right no-repeat;
+		background-size: contain;
+		z-index: 0; // Фон на заднем плане
+		pointer-events: none; // Чтобы нельзя было кликнуть по фоновой картинке
+
+		// На мобильных может мешать, отключаем
+		@media (max-width: 47.9988rem) {
+			display: none;
+		}
+	}
+}
+.header-main {
+		display: flex;
+		flex-direction: column;
+		@include adaptive-value("gap", 54, 20, 0);
+	// .header-main__block
+
+	&__block {
+	}
+
+	// .header-main__buttons
+
+	&__buttons {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1.25rem;
+	}
+
+	// .header-main__button
+
+	&__button {
+		text-align: center;
+	}
+
+	// .header-main__stats
+
+	&__stats {
+	}
+}
+.block {
+	// .block__header
+
+	&__header {
+	}
+
+	// .block__header-title
+
+	&__header-title {
+	}
+
+	// .block__header-text
+
+	&__header-text {
+	}
+}
+
+.stats {
+	// .stats__item
+
+	&__item {
+	}
+}
+.item-stats {
+	// .item-stats__value
+
+	&__value {
+	}
+
+	// .item-stats__text
+
+	&__text {
+	}
+}
+.image-main {
+	img {
+		max-width: 100%;
 	}
 }

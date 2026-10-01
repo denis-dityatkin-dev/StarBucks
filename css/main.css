@@ -1,7 +1,45 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
-@import "../css/components/font-icons.css";
 @import "/scss/main.css";
-@import "../css/components.css";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
+@import "../css/main.css";
+@font-face {
+  font-family: "icomoon";
+  src: url("/font-icons/icomoon.eot?j24rxu");
+  src: url("/font-icons/icomoon.eot?j24rxu#iefix") format("embedded-opentype"), url("/font-icons/icomoon.ttf?j24rxu") format("truetype"), url("/font-icons/icomoon.woff?j24rxu") format("woff"), url("/font-icons/icomoon.svg?j24rxu#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+[class^=icon-]::before, [class*=" icon-"]::before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "icomoon" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-play:before {
+  content: "\e902";
+}
+
+.icon-phone:before {
+  content: "\e900";
+}
+
+.icon-arrow:before {
+  content: "\e901";
+}
+
+.icon-instagram:before {
+  content: "\ea92";
+}
+
 :root {
   --background: #121517;
   --background-gradient: linear-gradient(263.46deg, #237249 1.41%, #35c66b 85.05%);
@@ -133,6 +171,163 @@ body {
   font-size: calc(16px + 4 * (100vw - 320px) / 1192);
 }
 
+.header-block__container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.block__header {
+  display: grid;
+  gap: calc(20px + 34 * (100vw - 320px) / 1192);
+}
+@media (min-width: 47.9988rem) {
+  .block__header--row {
+    display: flex;
+    align-items: center;
+    gap: calc(20px + 52 * (100vw - 320px) / 1192);
+  }
+}
+@media (min-width: 47.9988rem) {
+  .block__header--row-rev {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: calc(20px + 52 * (100vw - 320px) / 1192);
+  }
+}
+.title {
+  font-weight: 800;
+  font-size: calc(42px + 38 * (100vw - 320px) / 1192);
+  line-height: 1.09;
+  letter-spacing: -0.03em;
+  color: var(--white);
+}
+.title span {
+  background: var(--background-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@media (max-width: 47.9988rem) {
+  .title br {
+    display: none;
+  }
+}
+
+.text {
+  line-height: 1.63;
+  letter-spacing: -0.02em;
+}
+.text P:not(:last-child) {
+  margin-bottom: 0.625rem;
+}
+@media (max-width: 47.9988rem) {
+  .text br {
+    display: none;
+  }
+}
+@media (min-width: 47.9988rem) {
+  .text--row {
+    max-width: 26.875rem;
+  }
+}
+
+.buttons-block__button {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: start;
+  gap: 1.875rem;
+}
+@media (max-width: 47.9988rem) {
+  .buttons-block__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+}
+
+.button {
+  padding-inline: calc(20px + 58 * (100vw - 320px) / 1192);
+  padding-block: 1.25rem;
+  max-height: 4.6875rem;
+  font-size: calc(20px + 4 * (100vw - 320px) / 1192);
+  line-height: 1.46;
+  border-radius: 5.1875rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  background: var(--background-gradient);
+  transition: box-shadow 0.4s, transform 0.4s;
+}
+.button:hover {
+  box-shadow: 0 0 20px rgba(53, 198, 107, 0.7), 0 0 40px rgba(53, 198, 107, 0.4);
+}
+@media (max-width: 47.9988rem) {
+  .button {
+    width: 100%;
+  }
+}
+
+.button--dark {
+  padding-inline: calc(20px + 34 * (100vw - 320px) / 1192);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  background-color: var(--background);
+  background: transparent;
+  border: 0.0625rem solid var(--primary);
+  transition: all 0.5s;
+}
+.button--dark:hover {
+  color: var(--background);
+  background-color: var(--primary);
+}
+
+.button--buy {
+  padding-inline: calc(20px + 18 * (100vw - 320px) / 1192);
+  padding-block: 0.875rem;
+  max-height: 3.375rem;
+  font-size: 1.0625rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3.75rem;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: clip;
+}
+
+.wrapper > main {
+  flex-grow: 1;
+}
+
+[class*=__container] {
+  max-inline-size: 82.75rem;
+  margin-inline: auto;
+  padding-inline: 0.9375rem;
+}
+
+:root {
+  --font-family: "Montserrat", sans-serif;
+  --primary: #d9d9d9;
+  --white: #fff;
+  --background: #121517;
+  --background-gradient: linear-gradient(263.46deg, #237249 1.41%, #35c66b 85.05%);
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--primary);
+  background-color: var(--background);
+  font-size: calc(16px + 4 * (100vw - 320px) / 1192);
+}
+
 .header {
   position: fixed;
   width: 100%;
@@ -198,4 +393,62 @@ body {
   .menu-header__item {
     font-size: 24px;
   }
+}
+
+.main {
+  padding-top: calc(100px + 69 * (100vw - 320px) / 1192);
+  padding-bottom: calc(40px + 71 * (100vw - 320px) / 1192);
+  position: relative;
+  overflow: hidden;
+}
+.main__container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+@media (max-width: 47.9988rem) {
+  .main__container {
+    flex-direction: column;
+  }
+}
+.main__header, .main__image {
+  position: relative;
+  z-index: 1;
+}
+.main__image img {
+  max-width: 100%;
+}
+.main__bg-decoration {
+  position: absolute;
+  bottom: -35%;
+  right: -11%;
+  width: 100%;
+  height: 100%;
+  background: url("../images/main/main-bg.svg") bottom right no-repeat;
+  background-size: contain;
+  z-index: 0;
+  pointer-events: none;
+}
+@media (max-width: 47.9988rem) {
+  .main__bg-decoration {
+    display: none;
+  }
+}
+
+.header-main {
+  display: flex;
+  flex-direction: column;
+  gap: calc(20px + 34 * (100vw - 320px) / 1192);
+}
+.header-main__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+.header-main__button {
+  text-align: center;
+}
+.image-main img {
+  max-width: 100%;
 }
