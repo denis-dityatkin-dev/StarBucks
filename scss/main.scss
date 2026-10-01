@@ -7,7 +7,7 @@
 @import "components";
 
 $maxWidth: 1512;
-$maxWidthContainer: 1324;
+$maxWidthContainer: 1325;
 
 .wrapper {
 	min-height: 100%;
@@ -23,7 +23,7 @@ $maxWidthContainer: 1324;
 
 // ===============Ограничивающий контейнер через селктор класса============
 [class*="__container"] {
-	max-inline-size: 82.75rem;
+	max-inline-size: 82.8125rem;
 	margin-inline: auto;
 	padding-inline: 0.9375rem;
 }
@@ -58,7 +58,7 @@ body {
 		@include adaptive-value("gap", 95, 20, 0);
 		@include adaptive-value("min-height", 135, 80, 0);
 		@include adaptive-value("padding-block", 48, 34, 0);
-		@include adaptive-value("padding-inline", 38, 24, 0);
+		// @include adaptive-value("padding-inline", 38, 24, 0);
 		@media (max-width: 47.9988rem) {
 			justify-content: space-between;
 		}
@@ -144,8 +144,8 @@ body {
 	// .main__container
 
 	&__container {
-		 position: relative;
-		 
+		position: relative;
+
 		display: flex;
 		justify-content: space-between;
 		gap: 2rem;
@@ -157,7 +157,6 @@ body {
 	// .main__content
 
 	&__content {
-		
 	}
 	&__header,
 	&__image {
@@ -167,15 +166,40 @@ body {
 	// .main__header
 
 	&__header {
-	
 	}
 
 	// .main__image
 
 	&__image {
-		img {
-			max-width: 100%;
+		width: 100%;
+		max-width: 29.5rem; // Или конкретная ширина, например 600px
+		// max-width: 600px;  // Ограничение
+		aspect-ratio: 1 / 1;
+		position: relative;
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
 		}
+		&::before {
+			width: 14.3125rem;
+			height: 14.3125rem;
+			top: 3%;
+			left: -10%;
+			background: url("../images/main/image-up-left.svg") center / 100% 100% no-repeat;
+		}
+		&::after {
+			width: 20.25rem;
+			height: 20.25rem;
+			right: 0;
+			bottom: -10%;
+			background: url("../images/main/image-down-right.svg") center / 100% 100% no-repeat;
+		}
+	}
+	img {
+		max-width: 100%;
+		position: relative;
+		z-index: 1;
 	}
 	&__bg-decoration {
 		position: absolute;
@@ -183,8 +207,6 @@ body {
 		right: -11%;
 		width: 100%;
 		height: 100%;
-		// width: 53.5%; // Подгоните под макет (например, 50% или 800px)
-		// height: 68.9%; // Подгоните под макет
 		background: url("../images/main/main-bg.svg") bottom right no-repeat;
 		background-size: contain;
 		z-index: 0; // Фон на заднем плане
@@ -192,14 +214,16 @@ body {
 
 		// На мобильных может мешать, отключаем
 		@media (max-width: 47.9988rem) {
-			display: none;
+			bottom: 0;
+			right: 0;
+			opacity: 0.5;
 		}
 	}
 }
 .header-main {
-		display: flex;
-		flex-direction: column;
-		@include adaptive-value("gap", 54, 20, 0);
+	display: flex;
+	flex-direction: column;
+	@include adaptive-value("gap", 54, 20, 0);
 	// .header-main__block
 
 	&__block {
@@ -224,42 +248,43 @@ body {
 	&__stats {
 	}
 }
-.block {
-	// .block__header
-
-	&__header {
-	}
-
-	// .block__header-title
-
-	&__header-title {
-	}
-
-	// .block__header-text
-
-	&__header-text {
-	}
-}
 
 .stats {
+	display: flex;
+	flex-wrap: wrap;
+	@include adaptive-value("gap", 46, 20, 0);
+	@media (max-width: 47.9988rem) {
+		justify-content: center;
+	}
 	// .stats__item
 
 	&__item {
 	}
 }
 .item-stats {
+	max-width: 7.875rem;
 	// .item-stats__value
 
 	&__value {
+		@include adaptive-value("font-size", 62, 42, 0);
+		line-height: 1.09;
+		letter-spacing: -0.03em;
+		color: var(--white);
+		span {
+			&:nth-child(2) {
+				background: linear-gradient(266.83deg, #237249 -35.11%, #35c66b 57.94%);
+				background-clip: text;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+		}
 	}
 
 	// .item-stats__text
 
 	&__text {
-	}
-}
-.image-main {
-	img {
-		max-width: 100%;
+		font-size: 1.25rem;
+		line-height: 1.44;
+		letter-spacing: -0.02em;
 	}
 }
