@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
 @import "/scss/main.css";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
@@ -296,6 +297,59 @@ body {
   border-radius: 3.75rem;
 }
 
+.figure__container {
+  padding-bottom: 100px;
+}
+
+.figure__label {
+  display: flex;
+  gap: 2.5rem;
+  width: 178px; /* размер по натуральной величине SVG */
+  height: 178px; /* квадрат — чтобы пульсация была симметричной */
+}
+
+.figure__shape {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain; /* сохраняет пропорции SVG */
+  animation: figure-pulse 3s ease-in-out infinite;
+  transform-origin: 50% 50%; /* пульсация от центра, а не от угла */
+  will-change: transform; /* подсказка браузеру для плавности */
+  /* тень из Figma: -4px 13px 22px 0 rgba(20, 62, 40, 0.46) */
+  filter: drop-shadow(-4px 13px 22px rgba(20, 62, 40, 0.46));
+}
+
+@keyframes figure-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+.figure__shape-2 {
+  display: block;
+  width: 178px; /* или 100% — как у вас в макете */
+  height: 178px;
+  -o-object-fit: contain;
+     object-fit: contain; /* сохраняет пропорции SVG */
+  animation: figure-sway 5s ease-in-out infinite;
+  transform-origin: 50% 100%; /* качается как маятник — от нижней точки */
+  will-change: transform;
+  /* тень из Figma */
+  filter: drop-shadow(-4px 13px 22px rgba(20, 62, 40, 0.46));
+}
+
+@keyframes figure-sway {
+  0%, 100% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
 .wrapper {
   min-height: 100%;
   display: flex;
@@ -415,43 +469,65 @@ body {
   position: relative;
   z-index: 1;
 }
-.main__image {
+.main .main__image {
+  position: relative;
   width: 100%;
   max-width: 29.5rem;
   aspect-ratio: 1/1;
-  position: relative;
 }
-.main__image::before, .main__image::after {
+.main .main__image::before, .main .main__image::after {
   content: "";
   position: absolute;
+  border-radius: 100%;
+  pointer-events: none;
+  z-index: 0;
 }
-.main__image::before {
-  width: 14.3125rem;
-  height: 14.3125rem;
-  top: 3%;
+.main .main__image::before {
+  width: 229px;
+  height: 229px;
+  top: 2%;
   left: -10%;
-  background: url("../images/main/image-up-left.svg") center/100% 100% no-repeat;
+  background: rgba(217, 217, 217, 0.3);
+  filter: blur(124.04px);
 }
-.main__image::after {
+.main .main__image::after {
   width: 20.25rem;
   height: 20.25rem;
   right: 0;
   bottom: -10%;
-  background: url("../images/main/image-down-right.svg") center/100% 100% no-repeat;
+  background: linear-gradient(267.2deg, rgba(35, 114, 73, 0.55) 20.73%, rgba(53, 198, 107, 0.73) 52.81%);
+  filter: blur(175.5px);
 }
-.main img {
-  max-width: 100%;
+.main .main__image-img {
   position: relative;
   z-index: 1;
-}
-.main img::after {
-  position: absolute;
   width: 100%;
   height: 100%;
-  right: 0;
-  top: 0;
-  background: url("../images/main/image-up-right.svg") center/100% 100% no-repeat;
+}
+.main .main__image-img > img:first-child {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.main .figure__shape-2 {
+  position: absolute;
+  top: -10%;
+  right: 0%;
+  width: calc(168px + 90 * (100vw - 320px) / 1192);
+  height: calc(168px + 90 * (100vw - 320px) / 1192);
+  -o-object-fit: contain;
+     object-fit: contain;
   z-index: 2;
+  pointer-events: none;
+  filter: drop-shadow(-4px 13px 22px rgba(20, 62, 40, 0.46));
+  animation: figure-sway 3s ease-in-out infinite;
+  transform-origin: 50% 100%;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .main .figure__shape-2 {
+    animation: none;
+  }
 }
 .main__bg-decoration {
   position: absolute;
