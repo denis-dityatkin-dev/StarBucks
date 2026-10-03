@@ -151,7 +151,7 @@ body {
 		justify-content: space-between;
 		gap: 2rem;
 		@media (max-width: 47.9988rem) {
-			flex-direction: column;
+			flex-direction: column-reverse;
 			align-items: center;
 		}
 	}
@@ -186,6 +186,9 @@ body {
 			border-radius: 100%;
 			pointer-events: none; // не перехватывают клики
 			z-index: 0; // под картинкой
+			@media (max-width: 47.9988rem) {
+				display: none;
+			}
 		}
 
 		&::before {
@@ -213,13 +216,12 @@ body {
 			width: 100%;
 			height: 100%;
 
-
 			// Основная картинка
 			> img:first-child {
-				 display: block;
-      width: 100%;
-      height: 100%;         // ← не auto!
-      object-fit: contain;
+				display: block;
+				width: 100%;
+				height: 100%; // ← не auto!
+				object-fit: contain;
 			}
 		}
 	}
@@ -296,6 +298,9 @@ body {
 		filter: blur(80px); // ← уменьши радиус, если было 175
 		transform: translateZ(0); // ← форс GPU-слоя
 		backface-visibility: hidden; // ← убирает лишние перерисовки
+		@media (max-width: 47.9988rem) {
+			display: none;
+		}
 	}
 
 	&::before {
@@ -426,7 +431,6 @@ body {
 			left: -7%;
 		}
 	}
-	
 
 	// Отключаем анимацию для тех, кто просил уменьшить движение
 	@media (prefers-reduced-motion: reduce) {
@@ -471,7 +475,10 @@ body {
 
 			filter: blur(80px); // ← уменьши радиус, если было 175
 			transform: translateZ(0); // ← форс GPU-слоя
-			backface-visibility: hidden; // ← убирает лишние перерисовки
+			backface-visibility: hidden; 
+			@media (max-width: 47.9988rem) {
+				display: none;
+			}// ← убирает лишние перерисовки
 		}
 
 		&::before {
