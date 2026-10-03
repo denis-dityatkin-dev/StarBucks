@@ -509,7 +509,9 @@ body {
 .hero__image-img > img:first-child {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .hero .figure__shape-2 {
   position: absolute;
@@ -643,7 +645,7 @@ body {
   transform-origin: 50% 100%;
   will-change: transform;
 }
-@media (max-width: 47.9988rem) {
+@media (max-width: 52.6863rem) {
   .services__figure {
     top: -12%;
     left: -4%;

@@ -213,11 +213,13 @@ body {
 			width: 100%;
 			height: 100%;
 
+
 			// Основная картинка
 			> img:first-child {
-				display: block;
-				width: 100%;
-				height: auto;
+				 display: block;
+      width: 100%;
+      height: 100%;         // ← не auto!
+      object-fit: contain;
 			}
 		}
 	}
@@ -405,11 +407,16 @@ body {
 		filter: drop-shadow(-4px 13px 22px rgba(20, 62, 40, 0.46));
 		transform-origin: 50% 100%;
 		will-change: transform;
-		@media (max-width: 47.9988rem) {
+		@media (max-width: 52.6863rem) {
 			top: -12%;
 			left: -4%;
 			width: clamp(80px, 30%, 140px);
 		}
+		// @media (max-width: 47.9988rem) {
+		// 	top: -12%;
+		// 	left: -4%;
+		// 	width: clamp(80px, 30%, 140px);
+		// }
 		@media (max-width: 600.9808px) {
 			top: -12%;
 			left: -7%;
@@ -419,6 +426,7 @@ body {
 			left: -7%;
 		}
 	}
+	
 
 	// Отключаем анимацию для тех, кто просил уменьшить движение
 	@media (prefers-reduced-motion: reduce) {
