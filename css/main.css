@@ -463,7 +463,6 @@ body {
 @media (max-width: 47.9988rem) {
   .main__container {
     flex-direction: column;
-    justify-content: center;
     align-items: center;
   }
 }

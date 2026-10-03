@@ -151,7 +151,6 @@ body {
 		gap: 2rem;
 		@media (max-width: 47.9988rem) {
 			flex-direction: column;
-			justify-content: center;
 			align-items: center;
 		}
 	}
@@ -172,45 +171,81 @@ body {
 
 	// .main__image
 
-	&__image {
-		width: 100%;
-		max-width: 29.5rem; // Или конкретная ширина, например 600px
-		// max-width: 600px;  // Ограничение
-		aspect-ratio: 1 / 1;
+	.main__image {
 		position: relative;
+		width: 100%;
+		max-width: 29.5rem;
+		aspect-ratio: 1 / 1;
+	
+
+		// ============ СВЕЧЕНИЯ (псевдоэлементы) ============
 		&::before,
 		&::after {
 			content: "";
 			position: absolute;
+			border-radius: 100%;
+			pointer-events: none; // не перехватывают клики
+			z-index: 0; // под картинкой
 		}
+
 		&::before {
-			width: 14.3125rem;
-			height: 14.3125rem;
-			top: 3%;
+			width: 229px;
+			height: 229px;
+			top: 2%;
 			left: -10%;
-			background: url("../images/main/image-up-left.svg") center / 100% 100% no-repeat;
+			background: rgba(217, 217, 217, 0.3);
+			filter: blur(124.04px);
 		}
+
 		&::after {
 			width: 20.25rem;
 			height: 20.25rem;
 			right: 0;
 			bottom: -10%;
-			background: url("../images/main/image-down-right.svg") center / 100% 100% no-repeat;
+			background: linear-gradient(267.2deg, rgba(35, 114, 73, 0.55) 20.73%, rgba(53, 198, 107, 0.73) 52.81%);
+			filter: blur(175.5px);
 		}
-	}
-	img {
-		max-width: 100%;
-		position: relative;
-		z-index: 1;
 
-		&::after {
-			position: absolute;
+		// ============ ОБЁРТКА КАРТИНОК ============
+		&-img {
+			position: relative; // ← якорь для абсолютных элементов
+			z-index: 1; // ← выше свечений
 			width: 100%;
 			height: 100%;
-			right: 0;
-			top: 0;
-			background: url("../images/main/image-up-right.svg") center / 100% 100% no-repeat;
-			z-index: 2;
+
+			// Основная картинка
+			> img:first-child {
+				display: block;
+				width: 100%;
+				height: auto;
+			}
+		}
+	}
+
+	// ============ ДЕКОРАТИВНАЯ КЛЯКСА СПРАВА ВВЕРХУ ============
+	.figure__shape-2 {
+		position: absolute;
+		top: -10%;
+		right: 0%;
+		@include adaptive-value("width", 258, 168, 0);
+		@include adaptive-value("height", 258, 168, 0);
+		// width: 258px;               // ← подберите под макет
+		// height: 16.125rem;
+		object-fit: contain;
+
+		z-index: 2; // поверх основной картинки
+		pointer-events: none;
+
+		filter: drop-shadow(-4px 13px 22px rgba(20, 62, 40, 0.46));
+		animation: figure-sway 3s ease-in-out infinite;
+		transform-origin: 50% 100%;
+		will-change: transform;
+	}
+
+	// Отключаем анимацию для тех, кто просил уменьшить движение
+	@media (prefers-reduced-motion: reduce) {
+		.figure__shape-2 {
+			animation: none;
 		}
 	}
 	&__bg-decoration {
