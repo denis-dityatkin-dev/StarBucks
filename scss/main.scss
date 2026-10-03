@@ -151,6 +151,8 @@ body {
 		gap: 2rem;
 		@media (max-width: 47.9988rem) {
 			flex-direction: column;
+			justify-content: center;
+			align-items: center;
 		}
 	}
 
@@ -170,84 +172,83 @@ body {
 
 	// .main__image
 
-.main__image {
-  position: relative;
-  width: 100%;
-  max-width: 29.5rem;
-  aspect-ratio: 1 / 1;
+	.main__image {
+		position: relative;
+		width: 100%;
+		max-width: 29.5rem;
+		aspect-ratio: 1 / 1;
+	
 
-  // ============ СВЕЧЕНИЯ (псевдоэлементы) ============
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    border-radius: 100%;
-    pointer-events: none;      // не перехватывают клики
-    z-index: 0;                // под картинкой
-  }
+		// ============ СВЕЧЕНИЯ (псевдоэлементы) ============
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			border-radius: 100%;
+			pointer-events: none; // не перехватывают клики
+			z-index: 0; // под картинкой
+		}
 
-  &::before {
-    width: 229px;
-    height: 229px;
-    top: 2%;
-    left: -10%;
-    background: rgba(217, 217, 217, 0.3);
-    filter: blur(124.04px);
-  }
+		&::before {
+			width: 229px;
+			height: 229px;
+			top: 2%;
+			left: -10%;
+			background: rgba(217, 217, 217, 0.3);
+			filter: blur(124.04px);
+		}
 
-  &::after {
-    width: 20.25rem;
-    height: 20.25rem;
-    right: 0;
-    bottom: -10%;
-    background: linear-gradient(
-      267.2deg,
-      rgba(35, 114, 73, 0.55) 20.73%,
-      rgba(53, 198, 107, 0.73) 52.81%
-    );
-    filter: blur(175.5px);
-  }
+		&::after {
+			width: 20.25rem;
+			height: 20.25rem;
+			right: 0;
+			bottom: -10%;
+			background: linear-gradient(267.2deg, rgba(35, 114, 73, 0.55) 20.73%, rgba(53, 198, 107, 0.73) 52.81%);
+			filter: blur(175.5px);
+		}
 
-  // ============ ОБЁРТКА КАРТИНОК ============
-  &-img {
-    position: relative;        // ← якорь для абсолютных элементов
-    z-index: 1;                // ← выше свечений
-    width: 100%;
-    height: 100%;
+		// ============ ОБЁРТКА КАРТИНОК ============
+		&-img {
+			position: relative; // ← якорь для абсолютных элементов
+			z-index: 1; // ← выше свечений
+			width: 100%;
+			height: 100%;
 
-    // Основная картинка
-    > img:first-child {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-  }
-}
+			// Основная картинка
+			> img:first-child {
+				display: block;
+				width: 100%;
+				height: auto;
+			}
+		}
+	}
 
-// ============ ДЕКОРАТИВНАЯ КЛЯКСА СПРАВА ВВЕРХУ ============
-.figure__shape-2 {
-  position: absolute;
-  top: -10%;
-  right: 0%;
+	// ============ ДЕКОРАТИВНАЯ КЛЯКСА СПРАВА ВВЕРХУ ============
+	.figure__shape-2 {
+		position: absolute;
+		top: -10%;
+		right: 0%;
 		@include adaptive-value("width", 258, 168, 0);
 		@include adaptive-value("height", 258, 168, 0);
-  // width: 258px;               // ← подберите под макет
-  // height: 16.125rem;
-  object-fit: contain;
+		// width: 258px;               // ← подберите под макет
+		// height: 16.125rem;
+		object-fit: contain;
 
-  z-index: 2;                 // поверх основной картинки
-  pointer-events: none;
+		z-index: 2; // поверх основной картинки
+		pointer-events: none;
 
-  filter: drop-shadow(-4px 13px 22px rgba(20, 62, 40, 0.46));
-  animation: figure-sway 3s ease-in-out infinite;
-  transform-origin: 50% 100%;
-  will-change: transform;
-}
+		filter: drop-shadow(-4px 13px 22px rgba(20, 62, 40, 0.46));
+		animation: figure-sway 3s ease-in-out infinite;
+		transform-origin: 50% 100%;
+		will-change: transform;
+	}
 
-// Отключаем анимацию для тех, кто просил уменьшить движение
-@media (prefers-reduced-motion: reduce) {
-  .figure__shape-2 { animation: none; }
-}
+	// Отключаем анимацию для тех, кто просил уменьшить движение
+	@media (prefers-reduced-motion: reduce) {
+		.figure__shape-2 {
+			animation: none;
+		}
+	}
 	&__bg-decoration {
 		position: absolute;
 		bottom: -35%;
@@ -271,6 +272,51 @@ body {
 	display: flex;
 	flex-direction: column;
 	@include adaptive-value("gap", 54, 20, 0);
+
+	 position: relative;
+  isolation: isolate;         // ← изолируем stacking context
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+
+    // Мягкое ядро БЕЗ резкой границы
+    background: radial-gradient(
+      circle,
+      rgba(53, 198, 107, 0.55) 0%,
+      rgba(53, 198, 107, 0.35) 40%,
+      rgba(53, 198, 107, 0) 75%
+    );
+
+    filter: blur(80px);            // ← уменьши радиус, если было 175
+    transform: translateZ(0);      // ← форс GPU-слоя
+    backface-visibility: hidden;   // ← убирает лишние перерисовки
+  }
+
+  &::before {
+    width: 24rem;
+    height: 24rem;
+    left: -5%;
+    top: -10%;
+  }
+
+  &::after {
+    width: 22rem;
+    height: 22rem;
+    bottom: 10%;
+    right: -10%;
+    background: radial-gradient(
+      circle,
+      rgba(217, 217, 217, 0.4) 0%,
+      rgba(217, 217, 217, 0.2) 40%,
+      rgba(217, 217, 217, 0) 75%
+    );
+  }
+
 	// .header-main__block
 
 	&__block {
