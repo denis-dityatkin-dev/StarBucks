@@ -138,7 +138,7 @@ body {
 // ============ hero ===========
 
 .hero {
-	@include adaptive-value("padding-top", 189, 120, 0);
+	@include adaptive-value("padding-top", 189, 150, 0);
 	@include adaptive-value("padding-bottom", 111, 40, 0);
 
 	position: relative; // Важно!
@@ -266,47 +266,35 @@ body {
 	// 		translate: 5% 0%;
 	// 	}
 	// }
-	.figure__shape-2 {
-  --tx: 0%;
-  --ty: 0%;
-
-  position: absolute;
-  top: -10%;
-  right: 0%;
-  @include adaptive-value("width", 258, 168, 0);
-  @include adaptive-value("height", 258, 168, 0);
-  object-fit: contain;
-
-  z-index: 2;
-  pointer-events: none;
-
-  filter: drop-shadow(-4px 13px 22px rgba(20, 62, 40, 0.46));
-  animation: figure-sway 3s ease-in-out infinite;
-  transform-origin: 50% 100%;
-  will-change: transform;
-
-  translate: var(--tx) var(--ty);
-
-  @media (max-width: 61.9988rem) { --ty: 0%; }
-  @media (max-width: 980.9808px) { --ty: 50%; }
-  @media (max-width: 940.9808px) { --ty: 100%; }
-  @media (max-width: 47.9988rem) { --tx: -10%; --ty: 10%; }
-  @media (max-width: 29.9988rem) { --tx: 5%;  --ty: 0%; }
-}
 
 	// Отключаем анимацию для тех, кто просил уменьшить движение
-	@media (prefers-reduced-motion: reduce) {
-		.figure__shape-2 {
-			animation: none;
-		}
-	}
-	.figure__shape-2 {
-		position: absolute;
-		// Подбираем под реальный угол стакана внутри PNG
-		// Значения подобраны под стандартный PNG со стаканом по центру
-		top: -15%; // ← угол стакана чуть ниже верха контейнера
-		right: 10%; // ← угол стакана чуть левее правого края
 
+	// .figure__shape-2 {
+	// 	position: absolute;
+	// 	// Подбираем под реальный угол стакана внутри PNG
+	// 	// Значения подобраны под стандартный PNG со стаканом по центру
+	// 	top: -15%; // ← угол стакана чуть ниже верха контейнера
+	// 	right: 10%; // ← угол стакана чуть левее правого края
+
+	// 	@include adaptive-value("width", 258, 168, 0);
+	// 	@include adaptive-value("height", 258, 168, 0);
+	// 	object-fit: contain;
+
+	// 	z-index: 2;
+	// 	pointer-events: none;
+
+	// 	filter: drop-shadow(-4px 13px 22px rgba(20, 62, 40, 0.46));
+	// 	animation: figure-sway 3s ease-in-out infinite;
+	// 	transform-origin: 50% 100%;
+	// 	will-change: transform;
+	// }
+	.figure__shape-2 {
+		--tx: 0%;
+		--ty: 0%;
+
+		position: absolute;
+		top: -15%;
+		right: 5%;
 		@include adaptive-value("width", 258, 168, 0);
 		@include adaptive-value("height", 258, 168, 0);
 		object-fit: contain;
@@ -318,6 +306,37 @@ body {
 		animation: figure-sway 3s ease-in-out infinite;
 		transform-origin: 50% 100%;
 		will-change: transform;
+
+		translate: var(--tx) var(--ty);
+
+		@media (max-width: 991.9808px) {
+			--tx: -20%;
+			--ty: 70%;
+		}
+		@media (max-width: 991.9808px) {
+			--tx: -10%;
+			--ty: 50%;
+		}
+		@media (max-width: 940.9808px) {
+			--tx: -20%;
+			--ty: 100%;
+		}
+		@media (max-width: 47.9988rem) {
+			--tx: -40%;
+			--ty: 0%;
+		}
+		@media (max-width: 29.9988rem) {
+			--ty: 15%;
+		}
+		@media (max-width: 400.9808px) {
+			--tx: 0%;
+			--ty: 5%;
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.figure__shape-2 {
+			animation: none;
+		}
 	}
 	&__bg-decoration {
 		position: absolute;

@@ -451,7 +451,7 @@ body {
 }
 
 .hero {
-  padding-top: calc(120px + 69 * (100vw - 320px) / 1192);
+  padding-top: calc(150px + 39 * (100vw - 320px) / 1192);
   padding-bottom: calc(40px + 71 * (100vw - 320px) / 1192);
   position: relative;
 }
@@ -531,8 +531,8 @@ body {
   --tx: 0%;
   --ty: 0%;
   position: absolute;
-  top: -10%;
-  right: 0%;
+  top: -15%;
+  right: 5%;
   width: calc(168px + 90 * (100vw - 320px) / 1192);
   height: calc(168px + 90 * (100vw - 320px) / 1192);
   -o-object-fit: contain;
@@ -545,52 +545,45 @@ body {
   will-change: transform;
   translate: var(--tx) var(--ty);
 }
-@media (max-width: 61.9988rem) {
+@media (max-width: 991.9808px) {
   .hero .figure__shape-2 {
-    --ty: 0%;
+    --tx: -20%;
+    --ty: 70%;
   }
 }
-@media (max-width: 980.9808px) {
+@media (max-width: 991.9808px) {
   .hero .figure__shape-2 {
+    --tx: -10%;
     --ty: 50%;
   }
 }
 @media (max-width: 940.9808px) {
   .hero .figure__shape-2 {
+    --tx: -20%;
     --ty: 100%;
   }
 }
 @media (max-width: 47.9988rem) {
   .hero .figure__shape-2 {
-    --tx: -10%;
-    --ty: 10%;
+    --tx: -40%;
+    --ty: 0%;
   }
 }
 @media (max-width: 29.9988rem) {
   .hero .figure__shape-2 {
-    --tx: 5%;
-    --ty: 0%;
+    --ty: 15%;
+  }
+}
+@media (max-width: 400.9808px) {
+  .hero .figure__shape-2 {
+    --tx: 0%;
+    --ty: 5%;
   }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero .figure__shape-2 {
     animation: none;
   }
-}
-.hero .figure__shape-2 {
-  position: absolute;
-  top: -15%;
-  right: 10%;
-  width: calc(168px + 90 * (100vw - 320px) / 1192);
-  height: calc(168px + 90 * (100vw - 320px) / 1192);
-  -o-object-fit: contain;
-     object-fit: contain;
-  z-index: 2;
-  pointer-events: none;
-  filter: drop-shadow(-4px 13px 22px rgba(20, 62, 40, 0.46));
-  animation: figure-sway 3s ease-in-out infinite;
-  transform-origin: 50% 100%;
-  will-change: transform;
 }
 .hero__bg-decoration {
   position: absolute;
