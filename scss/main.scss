@@ -138,7 +138,7 @@ body {
 // ============ hero ===========
 
 .hero {
-	@include adaptive-value("padding-top", 169, 100, 0);
+	@include adaptive-value("padding-top", 189, 120, 0);
 	@include adaptive-value("padding-bottom", 111, 40, 0);
 
 	position: relative; // Важно!
@@ -211,8 +211,8 @@ body {
 
 		// ============ ОБЁРТКА КАРТИНОК ============
 		&-img {
-			position: relative; // ← якорь для абсолютных элементов
-			z-index: 1; // ← выше свечений
+			position: relative;
+			z-index: 1;
 			width: 100%;
 			height: 100%;
 
@@ -223,28 +223,76 @@ body {
 				height: 100%; // ← не auto!
 				object-fit: contain;
 			}
+			> img:nth-child(2) {
+				position: relative;
+				z-index: 1;
+				display: block;
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+			}
 		}
 	}
 
 	// ============ ДЕКОРАТИВНАЯ КЛЯКСА СПРАВА ВВЕРХУ ============
+	// .figure__shape-2 {
+	// 	position: absolute;
+	// 	top: -10%;
+	// 	right: 0%;
+	// 	@include adaptive-value("width", 258, 168, 0);
+	// 	@include adaptive-value("height", 258, 168, 0);
+	// 	object-fit: contain;
+
+	// 	z-index: 2; // поверх основной картинки
+	// 	pointer-events: none;
+
+	// 	filter: drop-shadow(-4px 13px 22px rgba(20, 62, 40, 0.46));
+	// 	animation: figure-sway 3s ease-in-out infinite;
+	// 	transform-origin: 50% 100%;
+	// 	will-change: transform;
+	// 	@media (max-width: 61.9988rem) {
+	// 		translate: -0% 0%;
+	// 	}
+	// 	@media (max-width: 980.9808px) {
+	// 		translate: -0% 50%;
+	// 	}
+	// 	@media (max-width: 940.9808px) {
+	// 		translate: -0% 100%;
+	// 	}
+	// 	@media (max-width: 47.9988rem) {
+	// 		translate: -10% 10%;
+	// 	}
+	// 	@media (max-width: 29.9988rem) {
+	// 		translate: 5% 0%;
+	// 	}
+	// }
 	.figure__shape-2 {
-		position: absolute;
-		top: -10%;
-		right: 0%;
-		@include adaptive-value("width", 258, 168, 0);
-		@include adaptive-value("height", 258, 168, 0);
-		// width: 258px;               // ← подберите под макет
-		// height: 16.125rem;
-		object-fit: contain;
+  --tx: 0%;
+  --ty: 0%;
 
-		z-index: 2; // поверх основной картинки
-		pointer-events: none;
+  position: absolute;
+  top: -10%;
+  right: 0%;
+  @include adaptive-value("width", 258, 168, 0);
+  @include adaptive-value("height", 258, 168, 0);
+  object-fit: contain;
 
-		filter: drop-shadow(-4px 13px 22px rgba(20, 62, 40, 0.46));
-		animation: figure-sway 3s ease-in-out infinite;
-		transform-origin: 50% 100%;
-		will-change: transform;
-	}
+  z-index: 2;
+  pointer-events: none;
+
+  filter: drop-shadow(-4px 13px 22px rgba(20, 62, 40, 0.46));
+  animation: figure-sway 3s ease-in-out infinite;
+  transform-origin: 50% 100%;
+  will-change: transform;
+
+  translate: var(--tx) var(--ty);
+
+  @media (max-width: 61.9988rem) { --ty: 0%; }
+  @media (max-width: 980.9808px) { --ty: 50%; }
+  @media (max-width: 940.9808px) { --ty: 100%; }
+  @media (max-width: 47.9988rem) { --tx: -10%; --ty: 10%; }
+  @media (max-width: 29.9988rem) { --tx: 5%;  --ty: 0%; }
+}
 
 	// Отключаем анимацию для тех, кто просил уменьшить движение
 	@media (prefers-reduced-motion: reduce) {
@@ -252,21 +300,40 @@ body {
 			animation: none;
 		}
 	}
+	.figure__shape-2 {
+		position: absolute;
+		// Подбираем под реальный угол стакана внутри PNG
+		// Значения подобраны под стандартный PNG со стаканом по центру
+		top: -15%; // ← угол стакана чуть ниже верха контейнера
+		right: 10%; // ← угол стакана чуть левее правого края
+
+		@include adaptive-value("width", 258, 168, 0);
+		@include adaptive-value("height", 258, 168, 0);
+		object-fit: contain;
+
+		z-index: 2;
+		pointer-events: none;
+
+		filter: drop-shadow(-4px 13px 22px rgba(20, 62, 40, 0.46));
+		animation: figure-sway 3s ease-in-out infinite;
+		transform-origin: 50% 100%;
+		will-change: transform;
+	}
 	&__bg-decoration {
 		position: absolute;
-		bottom: -35%;
-		right: -11%;
-		width: 100%;
-		height: 100%;
-		background: url("../images/main/main-bg.svg") bottom right no-repeat;
+		top: 85%;
+		left: 50%;
+		width: 150%; // чуть больше стакана
+		height: 150%;
+		transform: translate(-50%, -50%);
+		background: url("../images/main/main-bg.svg") center center no-repeat;
 		background-size: contain;
-		z-index: 0; // Фон на заднем плане
-		pointer-events: none; // Чтобы нельзя было кликнуть по фоновой картинке
+		z-index: 0; // под стаканом
+		pointer-events: none;
 
-		// На мобильных может мешать, отключаем
 		@media (max-width: 47.9988rem) {
-			bottom: 0;
-			right: 0;
+			width: 120%;
+			height: 100%;
 			opacity: 0.5;
 		}
 	}
@@ -391,6 +458,9 @@ body {
 // ===========
 
 .services {
+	position: relative;
+	z-index: 2;
+
 	@include adaptive-value("padding-bottom", 100, 40, 0);
 	&__container {
 		display: flex;
@@ -475,10 +545,10 @@ body {
 
 			filter: blur(80px); // ← уменьши радиус, если было 175
 			transform: translateZ(0); // ← форс GPU-слоя
-			backface-visibility: hidden; 
+			backface-visibility: hidden;
 			@media (max-width: 47.9988rem) {
 				display: none;
-			}// ← убирает лишние перерисовки
+			} // ← убирает лишние перерисовки
 		}
 
 		&::before {
