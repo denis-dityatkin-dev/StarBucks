@@ -502,7 +502,7 @@ body {
   height: 20.25rem;
   right: 0;
   bottom: -10%;
-  background: linear-gradient(267.2deg, rgba(35, 114, 73, 0.55) 20.73%, rgba(53, 198, 107, 0.73) 52.81%);
+  background: linear-gradient(267.2deg, rgba(35, 114, 73, 0.35) 20.73%, rgba(53, 198, 107, 0.33) 22.81%);
   filter: blur(175.5px);
 }
 .hero__image-img {
@@ -618,7 +618,7 @@ body {
   border-radius: 50%;
   pointer-events: none;
   z-index: -1;
-  background: radial-gradient(circle, rgba(53, 198, 107, 0.55) 0%, rgba(53, 198, 107, 0.35) 40%, rgba(53, 198, 107, 0) 75%);
+  background: radial-gradient(circle, rgba(53, 198, 107, 0.55) 0%, rgba(53, 198, 107, 0.35) 20%, rgba(53, 198, 107, 0) 45%);
   filter: blur(80px);
   transform: translateZ(0);
   backface-visibility: hidden;
@@ -639,7 +639,7 @@ body {
   height: 22rem;
   bottom: 10%;
   right: -10%;
-  background: radial-gradient(circle, rgba(217, 217, 217, 0.4) 0%, rgba(217, 217, 217, 0.2) 40%, rgba(217, 217, 217, 0) 75%);
+  background: radial-gradient(circle, rgba(217, 217, 217, 0.4) 0%, rgba(217, 217, 217, 0.2) 20%, rgba(217, 217, 217, 0) 45%);
 }
 .header-main__buttons {
   display: flex;
@@ -690,6 +690,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-inline: calc(10px + 70 * (100vw - 320px) / 1192);
 }
 .services__figure {
   position: absolute;
@@ -705,11 +706,15 @@ body {
   transform-origin: 50% 100%;
   will-change: transform;
 }
-@media (max-width: 52.6863rem) {
+@media (max-width: 932.9808px) {
   .services__figure {
     top: -12%;
     left: -4%;
-    width: clamp(80px, 30%, 140px);
+  }
+}
+@media (max-width: 52.6863rem) {
+  .services__figure {
+    width: clamp(6.25rem, 50%, 9.375rem);
   }
 }
 @media (max-width: 600.9808px) {
@@ -813,4 +818,268 @@ body {
 .item-service__text {
   font-size: calc(16px + 4 * (100vw - 320px) / 1192);
   color: var(--color-text);
+}
+
+.make {
+  padding-bottom: calc(40px + 60 * (100vw - 320px) / 1192);
+  position: relative;
+  z-index: 2;
+}
+.make__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* выравнивание по центру */
+  gap: 1.25rem;
+}
+@media (max-width: 61.9988rem) {
+  .make__container {
+    flex-direction: column;
+    align-items: start;
+  }
+}
+@media (max-width: 47.9988rem) {
+  .make__container {
+    align-items: center;
+  }
+}
+.make__images {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 34.25rem;
+  max-width: 34.25rem;
+  aspect-ratio: 548/754;
+}
+@media (max-width: 61.9988rem) {
+  .make__images {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+}
+.make__bg-decoration {
+  position: absolute;
+  top: 23%; /* на какой высоте начинается */
+  right: -160%; /* сдвиг вправо от блока */
+  width: 200%; /* размер относительно блока */
+  height: 132%;
+  background: url("../images/make/make-main-bg.svg") center right no-repeat;
+  background-size: contain;
+  z-index: 0;
+  pointer-events: none;
+}
+@media (max-width: 61.9988rem) {
+  .make__bg-decoration {
+    width: 180%;
+    top: 5%;
+    opacity: 0.5;
+  }
+}
+@media (max-width: 47.9988rem) {
+  .make__bg-decoration {
+    right: -50%;
+    opacity: 0.3;
+  }
+}
+.images-make {
+  /* Общие стили для всех оберток картинок */
+  isolation: isolate;
+}
+.images-make::before, .images-make::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(circle, rgba(53, 198, 107, 0.55) 0%, rgba(53, 198, 107, 0.35) 20%, rgba(53, 198, 107, 0) 45%);
+  filter: blur(80px);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+@media (max-width: 47.9988rem) {
+  .images-make::before, .images-make::after {
+    display: none;
+  }
+}
+.images-make::before {
+  width: 24rem;
+  height: 24rem;
+  bottom: -10%;
+  left: -10%;
+}
+.images-make::after {
+  width: 22rem;
+  height: 22rem;
+  top: -10%;
+  right: -10%;
+  background: radial-gradient(circle, rgba(217, 217, 217, 0.4) 0%, rgba(217, 217, 217, 0.2) 20%, rgba(217, 217, 217, 0) 45%);
+}
+.images-make__item {
+  position: absolute;
+}
+.images-make__item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.images-make {
+  /* Декор (верхний слой, клякса справа сверху) */
+}
+.images-make__item-1 {
+  top: 0;
+  right: 0;
+  width: calc(150px + 95 * (100vw - 320px) / 1192);
+  height: calc(150px + 95 * (100vw - 320px) / 1192);
+  z-index: 3;
+  animation: figure-pulse 3s ease-in-out infinite;
+  transform-origin: 50% 50%;
+  will-change: transform;
+  filter: drop-shadow(-4px 13px 22px rgba(20, 62, 40, 0.46));
+}
+.images-make {
+  /* Фото кофейни (основное) */
+}
+.images-make__item-2 {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  /* Срез правого верхнего угла */
+  clip-path: polygon(0 0, 85% 0, 100% 15%, 100% 100%, 0 100%);
+}
+.images-make {
+  /* Зеленый фон (нижний слой, сдвинут относительно фото) */
+}
+.images-make__item-3 {
+  top: 10%; /* сдвиг вниз */
+  left: 5%; /* сдвиг влево */
+  width: 80%;
+  height: 83%;
+  z-index: 1;
+}
+
+.content-make {
+  position: relative;
+  z-index: 1;
+  max-width: 28.5625rem;
+}
+@media (min-width: 61.9988rem) {
+  .content-make {
+    flex: 0 1 auto;
+    width: 100%;
+  }
+}
+@media (max-width: 61.9988rem) {
+  .content-make {
+    display: flex;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 100%;
+    /* Ограничиваем заголовок и текст */
+  }
+}
+@media (max-width: 61.9988rem) and (min-width: 61.9988rem) {
+  .content-make .content-make--block__header {
+    max-width: 457px;
+  }
+}
+@media (max-width: 47.9988rem) {
+  .content-make {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+.content-make {
+  isolation: isolate;
+}
+.content-make::before, .content-make::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(circle, rgba(53, 198, 107, 0.55) 0%, rgba(53, 198, 107, 0.35) 20%, rgba(53, 198, 107, 0) 45%);
+  filter: blur(80px);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+@media (max-width: 47.9988rem) {
+  .content-make::before, .content-make::after {
+    display: none;
+  }
+}
+.content-make::before {
+  width: 24rem;
+  height: 24rem;
+  right: -5%;
+  top: -10%;
+}
+.content-make::after {
+  width: 22rem;
+  height: 22rem;
+  bottom: -20%;
+  left: -20%;
+  background: radial-gradient(circle, rgba(217, 217, 217, 0.4) 0%, rgba(217, 217, 217, 0.2) 40%, rgba(217, 217, 217, 0) 75%);
+}
+.content-make__media {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  background: rgba(217, 217, 217, 0.02);
+  box-shadow: 0 4px 41px 0 rgba(0, 0, 0, 0.39);
+  /* без margin-inline: auto — превью слева */
+}
+@media (min-width: 61.9988rem) {
+  .content-make__media {
+    max-width: 27.9375rem;
+    aspect-ratio: 447/275;
+  }
+}
+.content-make__preview {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.content-make__button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-inline: calc(20px + 22 * (100vw - 320px) / 1192);
+  padding-block: calc(10px + 10 * (100vw - 320px) / 1192);
+}
+.content-make__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  z-index: 3;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.content-make.is-playing .content-make__video {
+  opacity: 1;
+  visibility: visible;
+}
+.content-make.is-playing .content-make__preview,
+.content-make.is-playing .content-make__button {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.content-make--block__header {
+  padding-bottom: calc(20px + 43 * (100vw - 320px) / 1192);
 }
