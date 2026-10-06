@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const contentMake = document.querySelector('.content-make');
     const mediaBlock = document.querySelector('.content-make__media');
     
-    if (!mediaBlock) return;
+    if (!contentMake || !mediaBlock) return;
 
-    // ID вашего видео
     const videoId = 'cKl9rqjBAQ4'; 
 
     mediaBlock.addEventListener('click', function(e) {
@@ -21,8 +21,10 @@ document.addEventListener('DOMContentLoaded', function() {
         iframe.setAttribute('allowfullscreen', '');
         iframe.classList.add('content-make__video');
 
-        // Очищаем блок (удаляем картинку и кнопку) и вставляем видео
-        mediaBlock.innerHTML = '';
+        // ВАЖНО: Добавляем класс is-playing на .content-make (родитель)
+        contentMake.classList.add('is-playing');
+
+        // Вставляем iframe внутрь media-блока
         mediaBlock.appendChild(iframe);
     });
 });

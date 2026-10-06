@@ -5,13 +5,15 @@
 @import "../css/main.css";
 @font-face {
   font-family: "icomoon";
-  src: url("/font-icons/icomoon.eot?j24rxu");
-  src: url("/font-icons/icomoon.eot?j24rxu#iefix") format("embedded-opentype"), url("/font-icons/icomoon.ttf?j24rxu") format("truetype"), url("/font-icons/icomoon.woff?j24rxu") format("woff"), url("/font-icons/icomoon.svg?j24rxu#icomoon") format("svg");
+  /* Убрали слеш в начале, оставили ../ */
+  src: url("../font-icons/icomoon.eot?j24rxu");
+  src: url("../font-icons/icomoon.eot?j24rxu#iefix") format("embedded-opentype"), url("../font-icons/icomoon.ttf?j24rxu") format("truetype"), url("../font-icons/icomoon.woff?j24rxu") format("woff"), url("../font-icons/icomoon.svg?j24rxu#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
-[class^=icon-]::before, [class*=" icon-"]::before {
+[class^=icon-]::before,
+[class*=" icon-"]::before {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: "icomoon" !important;
   speak: never;
@@ -976,7 +978,6 @@ body {
     gap: 1.25rem;
     width: 100%;
     max-width: 100%;
-    /* Ограничиваем заголовок и текст */
   }
 }
 @media (max-width: 61.9988rem) and (min-width: 61.9988rem) {
@@ -991,17 +992,17 @@ body {
   }
 }
 .content-make {
-  isolation: isolate;
+  /* --- СВЕЧЕНИЯ (ФОН) --- */
 }
 .content-make::before, .content-make::after {
   content: "";
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
   background: radial-gradient(circle, rgba(53, 198, 107, 0.55) 0%, rgba(53, 198, 107, 0.35) 20%, rgba(53, 198, 107, 0) 45%);
   filter: blur(80px);
-  transform: translateZ(0);
+  will-change: transform;
   backface-visibility: hidden;
 }
 @media (max-width: 47.9988rem) {
@@ -1022,6 +1023,13 @@ body {
   left: -20%;
   background: radial-gradient(circle, rgba(217, 217, 217, 0.4) 0%, rgba(217, 217, 217, 0.2) 40%, rgba(217, 217, 217, 0) 75%);
 }
+.content-make {
+  /* --- КОНТЕНТ (ПОВЕРХ ФОНА) --- */
+}
+.content-make > * {
+  position: relative;
+  z-index: 1;
+}
 .content-make__media {
   position: relative;
   width: 100%;
@@ -1029,7 +1037,6 @@ body {
   cursor: pointer;
   background: rgba(217, 217, 217, 0.02);
   box-shadow: 0 4px 41px 0 rgba(0, 0, 0, 0.39);
-  /* без margin-inline: auto — превью слева */
 }
 @media (min-width: 61.9988rem) {
   .content-make__media {
@@ -1043,6 +1050,7 @@ body {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 .content-make__button {
   position: absolute;
@@ -1054,6 +1062,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
   padding-inline: calc(20px + 22 * (100vw - 320px) / 1192);
   padding-block: calc(10px + 10 * (100vw - 320px) / 1192);
 }
@@ -1068,6 +1077,10 @@ body {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.content-make {
+  /* --- СОСТОЯНИЕ ВОСПРОИЗВЕДЕНИЯ --- */
+  /* Класс is-playing вешается на .content-make */
 }
 .content-make.is-playing .content-make__video {
   opacity: 1;

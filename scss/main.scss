@@ -760,7 +760,6 @@ body {
 		width: 100%;
 		max-width: 100%;
 
-		/* Ограничиваем заголовок и текст */
 		.content-make--block__header {
 			@media (min-width: 61.9988rem) {
 				max-width: 457px;
@@ -772,51 +771,56 @@ body {
 		justify-content: center;
 	}
 
-		isolation: isolate; // ← изолируем stacking context
+	/* --- СВЕЧЕНИЯ (ФОН) --- */
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		border-radius: 50%;
+		pointer-events: none;
+		z-index: 0;
 
-		&::before,
-		&::after {
-			content: "";
-			position: absolute;
-			border-radius: 50%;
-			pointer-events: none;
-			z-index: -1;
+		background: radial-gradient(
+			circle,
+			rgba(53, 198, 107, 0.55) 0%,
+			rgba(53, 198, 107, 0.35) 20%,
+			rgba(53, 198, 107, 0) 45%
+		);
 
-			// Мягкое ядро БЕЗ резкой границы
-			background: radial-gradient(
-				circle,
-				rgba(53, 198, 107, 0.55) 0%,
-				rgba(53, 198, 107, 0.35) 20%,
-				rgba(53, 198, 107, 0) 45%
-			);
+		filter: blur(80px);
+		will-change: transform;
+		backface-visibility: hidden;
 
-			filter: blur(80px); // ← уменьши радиус, если было 175
-			transform: translateZ(0); // ← форс GPU-слоя
-			backface-visibility: hidden;
-			@media (max-width: 47.9988rem) {
-				display: none;
-			} // ← убирает лишние перерисовки
+		@media (max-width: 47.9988rem) {
+			display: none;
 		}
+	}
 
-		&::before {
-			width: 24rem;
-			height: 24rem;
-			right: -5%;
-			top: -10%;
-		}
+	&::before {
+		width: 24rem;
+		height: 24rem;
+		right: -5%;
+		top: -10%;
+	}
 
-		&::after {
-			width: 22rem;
-			height: 22rem;
-			bottom: -20%;
-			left: -20%;
-			background: radial-gradient(
-				circle,
-				rgba(217, 217, 217, 0.4) 0%,
-				rgba(217, 217, 217, 0.2) 40%,
-				rgba(217, 217, 217, 0) 75%
-			);
-		}
+	&::after {
+		width: 22rem;
+		height: 22rem;
+		bottom: -20%;
+		left: -20%;
+		background: radial-gradient(
+			circle,
+			rgba(217, 217, 217, 0.4) 0%,
+			rgba(217, 217, 217, 0.2) 40%,
+			rgba(217, 217, 217, 0) 75%
+		);
+	}
+
+	/* --- КОНТЕНТ (ПОВЕРХ ФОНА) --- */
+	> * {
+		position: relative;
+		z-index: 1;
+	}
 
 	&__media {
 		position: relative;
@@ -825,7 +829,7 @@ body {
 		cursor: pointer;
 		background: rgba(217, 217, 217, 0.02);
 		box-shadow: 0 4px 41px 0 rgba(0, 0, 0, 0.39);
-		/* без margin-inline: auto — превью слева */
+		
 		@media (min-width: 61.9988rem) {
 			max-width: 27.9375rem;
 			aspect-ratio: 447 / 275;
@@ -837,6 +841,7 @@ body {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+		transition: opacity 0.5s ease, visibility 0.5s ease;
 	}
 
 	&__button {
@@ -849,6 +854,7 @@ body {
 		display: flex;
 		align-items: center;
 		gap: 0.75rem;
+		transition: opacity 0.5s ease, visibility 0.5s ease;
 		@include adaptive-value("padding-inline", 42, 20, 0);
 		@include adaptive-value("padding-block", 20, 10, 0);
 	}
@@ -863,11 +869,11 @@ body {
 		z-index: 3;
 		opacity: 0;
 		visibility: hidden;
-		transition:
-			opacity 0.5s ease,
-			visibility 0.5s ease;
+		transition: opacity 0.5s ease, visibility 0.5s ease;
 	}
 
+	/* --- СОСТОЯНИЕ ВОСПРОИЗВЕДЕНИЯ --- */
+	/* Класс is-playing вешается на .content-make */
 	&.is-playing {
 		.content-make__video {
 			opacity: 1;
