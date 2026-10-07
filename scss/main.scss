@@ -904,6 +904,270 @@ body {
 
 // =========== our ============
 
+// .our {
+// 	@include adaptive-value("padding-bottom", 100, 40, 0);
+
+// 	&__container {
+// 		position: relative;
+// 		overflow: visible;
+// 	}
+
+// 	&__inner-container {
+// 		display: flex;
+// 		align-items: center;
+// 		@include adaptive-value("gap", 54, 10, 0);
+// 		@media (max-width: 47.9988rem) {
+// 			flex-direction: column;
+// 			align-items: center;
+// 		}
+// 	}
+
+// 	&__slider {
+// 		margin-inline: 0; // прижимаем влево
+// 		width: 100%;
+// 		@media (min-width: 61.9988rem) {
+// 			max-width: 939px;
+// 		}
+// 		@media (max-width: 960.9808px) {
+// 			max-width: 639px;
+// 		}
+// 	}
+
+// 	&__slide {
+// 		flex-shrink: 0;
+// 		max-width: 100%;
+// 		height: auto;
+// 		display: flex;
+// 		justify-content: center;
+// 		cursor: pointer;
+// 		@media (min-width: 61.9988rem) {
+// 			width: 17.3125rem;
+// 		}
+// 	}
+
+// 	&__controls {
+// 		// position: absolute;
+// 		// top: 63%;
+// 		// right: 18%;
+
+// 		// transform: translateY(-50%);
+// 	}
+
+// 	&__arrow {
+// 		display: inline-flex;
+// 		align-items: center;
+// 		justify-content: center;
+
+// 		width: 84px;
+// 		height: 84px;
+// 		padding: 0;
+// 		border: none;
+// 		background: transparent;
+// 		border-radius: 50%;
+// 		cursor: pointer;
+
+// 		// плавность для свечения и масштаба
+// 		transition:
+// 			filter 0.45s ease,
+// 			transform 0.45s ease;
+
+// 		img {
+// 			display: block;
+// 			width: 100%;
+// 			height: 100%;
+// 			transition: transform 0.45s ease;
+// 			pointer-events: none; // клик всегда по кнопке, а не по img
+// 		}
+
+// 		&:hover {
+// 			// плавное зелёное свечение (двойное — мягкое + ядро)
+// 			filter: drop-shadow(0 0 8px rgba(53, 198, 107, 0.75)) drop-shadow(0 0 22px rgba(53, 198, 107, 0.45));
+// 		}
+
+// 		&:hover img {
+// 			transform: scale(1.06);
+// 		}
+
+// 		&:active {
+// 			transform: scale(0.95);
+// 			filter: drop-shadow(0 0 4px rgba(53, 198, 107, 0.8));
+// 		}
+
+// 		&:focus-visible {
+// 			outline: 2px solid #35c66b;
+// 			outline-offset: 4px;
+// 		}
+// 	}
+// }
+
+// .our-block {
+// 	&__header {
+// 		@include adaptive-value("margin-bottom", 54, 30, 0);
+// 	}
+// }
+
+// .item-our {
+// 	position: relative;
+// 	display: flex;
+// 	flex-direction: column;
+// 	align-items: center;
+// 	text-align: center;
+
+// 	width: 277px;
+// 	height: 554px;
+// 	box-sizing: border-box;
+
+// 	padding: 17px 20px 24px;
+// 	border-radius: 1.8125rem;
+// 	background: transparent;
+
+// 	&::after {
+// 		content: "";
+// 		position: absolute;
+// 		inset: 0;
+// 		border-radius: inherit;
+// 		padding: 0.0844rem;
+// 		background: linear-gradient(117.87deg, #dadada 0%, rgba(218, 218, 218, 0.07) 41.761%, #dadada 100%);
+// 		-webkit-mask:
+// 			linear-gradient(#fff 0 0) content-box,
+// 			linear-gradient(#fff 0 0);
+// 		mask:
+// 			linear-gradient(#fff 0 0) content-box,
+// 			linear-gradient(#fff 0 0);
+// 		-webkit-mask-composite: xor;
+// 		mask-composite: exclude;
+// 		pointer-events: none;
+// 		z-index: 2;
+// 		transition: background 0.3s ease;
+// 	}
+
+// 	> * {
+// 		position: relative;
+// 		z-index: 1;
+// 	}
+
+// 	&__image {
+// 		position: relative;
+// 		flex: 0 0 auto;
+// 		display: flex;
+// 		align-items: center;
+// 		justify-content: center;
+// 		height: 240px;
+// 		margin-bottom: 0.75rem;
+
+// 		&::before {
+// 			content: "";
+// 			position: absolute;
+// 			width: 85%;
+// 			aspect-ratio: 1 / 1;
+// 			top: 50%;
+// 			left: 50%;
+// 			transform: translate(-50%, -50%);
+// 			border-radius: 50%;
+// 			background: var(--background-gradient);
+// 			z-index: 0;
+// 		}
+
+// 		img {
+// 			position: relative;
+// 			z-index: 1;
+// 			width: auto;
+// 			height: auto;
+// 			object-fit: contain;
+// 			filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.6));
+// 			transition: scale 0.5s;
+
+// 			&:hover {
+// 				scale: 1.02;
+// 			}
+// 		}
+// 	}
+
+// 	&__body {
+// 		display: flex;
+// 		flex-direction: column;
+// 		flex: 1 1 auto;
+// 		width: 100%;
+// 	}
+
+// 	&__header {
+// 		flex: 1 1 auto;
+// 		display: flex;
+// 		flex-direction: column;
+// 		justify-content: center;
+// 		margin-bottom: 0.4375rem;
+// 	}
+
+// 	&__title {
+// 		font-size: 32px;
+// 		line-height: 1.3;
+// 		letter-spacing: -0.02em;
+// 		color: var(--white);
+// 		transition: color 0.5s ease;
+
+// 		&:hover {
+// 			color: #35c66b; // Просто зеленый цвет из градиента
+// 		}
+
+// 		&:not(:last-child) {
+// 			margin-bottom: 18px;
+// 		}
+// 	}
+
+// 	&__text {
+// 		font-size: 1.25rem;
+// 		line-height: 1.4;
+// 		letter-spacing: -0.02em;
+// 	}
+
+// 	&__footer {
+// 		margin-top: auto;
+// 		display: flex;
+// 		flex-direction: column;
+// 		align-items: center;
+// 		gap: 0.75rem;
+// 		width: 100%;
+// 	}
+
+// 	&__category {
+// 		display: flex;
+// 		justify-content: center;
+// 		align-items: flex-end;
+// 		gap: 1.5rem;
+// 		width: 100%;
+// 	}
+
+// 	&__button {
+// 		width: 100%;
+// 		max-width: 200px;
+// 	}
+// }
+
+// .category-our {
+// 	line-height: 1.63;
+// 	letter-spacing: -0.02em;
+
+// 	&__price {
+// 		font-weight: 500;
+// 		font-size: 2rem;
+// 		color: var(--white);
+// 	}
+
+// 	&__volume {
+// 		font-size: 1.25rem;
+// 	}
+// }
+
+// // Подсветка правого видимого слайда
+// .swiper-slide.is-last-visible {
+// 	.item-our::after {
+// 		background: var(--background-gradient);
+// 		padding: 0.125rem;
+// 	}
+// }
+
+// =========== our ============
+
 .our {
 	@include adaptive-value("padding-bottom", 100, 40, 0);
 
@@ -912,26 +1176,52 @@ body {
 		overflow: visible;
 	}
 
+	&__inner-container {
+		display: flex;
+		align-items: center;
+		@include adaptive-value("gap", 54, 10, 0);
+
+		@media (max-width: 47.9988rem) {
+			flex-direction: column;
+			text-align: center;
+		}
+	}
+
 	&__slider {
-		max-width: 58.6875rem; // 3 × 277 + 2 × 54
-		margin-inline: 0; // прижимаем влево
+		margin-inline: 0;
 		width: 100%;
+
+		@media (min-width: 61.9988rem) {
+			max-width: 939px;
+		}
+		@media (max-width: 960.9808px) {
+			max-width: 639px;
+		}
 	}
 
 	&__slide {
-		width: 277px;
 		flex-shrink: 0;
+		max-width: 100%;
 		height: auto;
 		display: flex;
 		justify-content: center;
+		cursor: pointer;
+
+		@media (min-width: 61.9988rem) {
+			width: 17.3125rem;
+		}
 	}
 
 	&__controls {
-		position: absolute;
-		top: 63%;
-		right: 18%;
-		padding-right: 20px;
-		transform: translateY(-50%);
+		// По умолчанию — flex-элемент внутри .our__inner-container,
+		// поэтому gap работает. На мобильных уходит вниз.
+		flex-shrink: 0;
+
+		// @media (max-width: 47.9988rem) {
+		// 	margin-top: 1.875rem;
+		// 	text-align: center;			// align-self: center;
+		// 	margin-right: 54px;
+		// }
 	}
 
 	&__arrow {
@@ -947,7 +1237,6 @@ body {
 		border-radius: 50%;
 		cursor: pointer;
 
-		// плавность для свечения и масштаба
 		transition:
 			filter 0.45s ease,
 			transform 0.45s ease;
@@ -957,11 +1246,10 @@ body {
 			width: 100%;
 			height: 100%;
 			transition: transform 0.45s ease;
-			pointer-events: none; // клик всегда по кнопке, а не по img
+			pointer-events: none;
 		}
 
 		&:hover {
-			// плавное зелёное свечение (двойное — мягкое + ядро)
 			filter: drop-shadow(0 0 8px rgba(53, 198, 107, 0.75)) drop-shadow(0 0 22px rgba(53, 198, 107, 0.45));
 		}
 
@@ -987,6 +1275,7 @@ body {
 	}
 }
 
+// ===== КАРТОЧКА =====
 .item-our {
 	position: relative;
 	display: flex;
@@ -1002,6 +1291,7 @@ body {
 	border-radius: 1.8125rem;
 	background: transparent;
 
+	// Базовый серый бордер
 	&::after {
 		content: "";
 		position: absolute;
@@ -1019,12 +1309,53 @@ body {
 		mask-composite: exclude;
 		pointer-events: none;
 		z-index: 2;
-		transition: background 0.3s ease;
+	}
+
+	// Градиентный бордер (ховер + активный)
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		border-radius: inherit;
+		padding: 0.125rem;
+		background: var(--background-gradient);
+		-webkit-mask:
+			linear-gradient(#fff 0 0) content-box,
+			linear-gradient(#fff 0 0);
+		mask:
+			linear-gradient(#fff 0 0) content-box,
+			linear-gradient(#fff 0 0);
+		-webkit-mask-composite: xor;
+		mask-composite: exclude;
+		pointer-events: none;
+		z-index: 3;
+		opacity: 0;
+		transition: opacity 0.4s ease;
+	}
+
+	&:hover::before {
+		opacity: 1;
+	}
+
+	&.is-active::before {
+		opacity: 1;
 	}
 
 	> * {
 		position: relative;
 		z-index: 1;
+	}
+
+	// ХОВЕР: градиентный бордер
+	&:hover::after {
+		background: var(--background-gradient);
+		padding: 0.125rem;
+	}
+
+	// АКТИВНАЯ: градиентный бордер (по клику)
+	&.is-active::after {
+		background: var(--background-gradient);
+		padding: 0.125rem;
 	}
 
 	&__image {
@@ -1087,7 +1418,7 @@ body {
 		transition: color 0.5s ease;
 
 		&:hover {
-			color: #35c66b; // Просто зеленый цвет из градиента
+			color: #35c66b;
 		}
 
 		&:not(:last-child) {
@@ -1139,10 +1470,82 @@ body {
 	}
 }
 
-// Подсветка правого видимого слайда
+// Подсветка правого видимого слайда (автоматическая, от Swiper)
 .swiper-slide.is-last-visible {
 	.item-our::after {
 		background: var(--background-gradient);
 		padding: 0.125rem;
 	}
 }
+// .item-our {
+// 	position: relative;
+// 	display: flex;
+// 	flex-direction: column;
+// 	align-items: center;
+// 	text-align: center;
+
+// 	width: 277px;
+// 	height: 554px;
+// 	box-sizing: border-box;
+
+// 	padding: 17px 20px 24px;
+// 	border-radius: 1.8125rem;
+// 	background: transparent;
+
+// 	// Базовый серый бордер
+// 	&::after {
+// 		content: "";
+// 		position: absolute;
+// 		inset: 0;
+// 		border-radius: inherit;
+// 		padding: 0.0844rem;
+// 		background: linear-gradient(117.87deg, #dadada 0%, rgba(218, 218, 218, 0.07) 41.761%, #dadada 100%);
+// 		-webkit-mask:
+// 			linear-gradient(#fff 0 0) content-box,
+// 			linear-gradient(#fff 0 0);
+// 		mask:
+// 			linear-gradient(#fff 0 0) content-box,
+// 			linear-gradient(#fff 0 0);
+// 		-webkit-mask-composite: xor;
+// 		mask-composite: exclude;
+// 		pointer-events: none;
+// 		z-index: 2;
+// 	}
+
+// 	// Градиентный бордер (ховер + активный)
+// 	&::before {
+// 		content: "";
+// 		position: absolute;
+// 		inset: 0;
+// 		border-radius: inherit;
+// 		padding: 0.125rem;
+// 		background: var(--background-gradient);
+// 		-webkit-mask:
+// 			linear-gradient(#fff 0 0) content-box,
+// 			linear-gradient(#fff 0 0);
+// 		mask:
+// 			linear-gradient(#fff 0 0) content-box,
+// 			linear-gradient(#fff 0 0);
+// 		-webkit-mask-composite: xor;
+// 		mask-composite: exclude;
+// 		pointer-events: none;
+// 		z-index: 3;
+// 		opacity: 0;
+// 		transition: opacity 0.4s ease;
+// 	}
+
+// 	&:hover::before {
+// 		opacity: 1;
+// 	}
+
+// 	&.is-active::before {
+// 		opacity: 1;
+// 	}
+
+// 	> * {
+// 		position: relative;
+// 		z-index: 1;
+// 	}
+
+// 	// ...остальные стили __image, __body и т.д. без изменений
+// }
