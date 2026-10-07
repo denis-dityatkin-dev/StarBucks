@@ -904,270 +904,6 @@ body {
 
 // =========== our ============
 
-// .our {
-// 	@include adaptive-value("padding-bottom", 100, 40, 0);
-
-// 	&__container {
-// 		position: relative;
-// 		overflow: visible;
-// 	}
-
-// 	&__inner-container {
-// 		display: flex;
-// 		align-items: center;
-// 		@include adaptive-value("gap", 54, 10, 0);
-// 		@media (max-width: 47.9988rem) {
-// 			flex-direction: column;
-// 			align-items: center;
-// 		}
-// 	}
-
-// 	&__slider {
-// 		margin-inline: 0; // прижимаем влево
-// 		width: 100%;
-// 		@media (min-width: 61.9988rem) {
-// 			max-width: 939px;
-// 		}
-// 		@media (max-width: 960.9808px) {
-// 			max-width: 639px;
-// 		}
-// 	}
-
-// 	&__slide {
-// 		flex-shrink: 0;
-// 		max-width: 100%;
-// 		height: auto;
-// 		display: flex;
-// 		justify-content: center;
-// 		cursor: pointer;
-// 		@media (min-width: 61.9988rem) {
-// 			width: 17.3125rem;
-// 		}
-// 	}
-
-// 	&__controls {
-// 		// position: absolute;
-// 		// top: 63%;
-// 		// right: 18%;
-
-// 		// transform: translateY(-50%);
-// 	}
-
-// 	&__arrow {
-// 		display: inline-flex;
-// 		align-items: center;
-// 		justify-content: center;
-
-// 		width: 84px;
-// 		height: 84px;
-// 		padding: 0;
-// 		border: none;
-// 		background: transparent;
-// 		border-radius: 50%;
-// 		cursor: pointer;
-
-// 		// плавность для свечения и масштаба
-// 		transition:
-// 			filter 0.45s ease,
-// 			transform 0.45s ease;
-
-// 		img {
-// 			display: block;
-// 			width: 100%;
-// 			height: 100%;
-// 			transition: transform 0.45s ease;
-// 			pointer-events: none; // клик всегда по кнопке, а не по img
-// 		}
-
-// 		&:hover {
-// 			// плавное зелёное свечение (двойное — мягкое + ядро)
-// 			filter: drop-shadow(0 0 8px rgba(53, 198, 107, 0.75)) drop-shadow(0 0 22px rgba(53, 198, 107, 0.45));
-// 		}
-
-// 		&:hover img {
-// 			transform: scale(1.06);
-// 		}
-
-// 		&:active {
-// 			transform: scale(0.95);
-// 			filter: drop-shadow(0 0 4px rgba(53, 198, 107, 0.8));
-// 		}
-
-// 		&:focus-visible {
-// 			outline: 2px solid #35c66b;
-// 			outline-offset: 4px;
-// 		}
-// 	}
-// }
-
-// .our-block {
-// 	&__header {
-// 		@include adaptive-value("margin-bottom", 54, 30, 0);
-// 	}
-// }
-
-// .item-our {
-// 	position: relative;
-// 	display: flex;
-// 	flex-direction: column;
-// 	align-items: center;
-// 	text-align: center;
-
-// 	width: 277px;
-// 	height: 554px;
-// 	box-sizing: border-box;
-
-// 	padding: 17px 20px 24px;
-// 	border-radius: 1.8125rem;
-// 	background: transparent;
-
-// 	&::after {
-// 		content: "";
-// 		position: absolute;
-// 		inset: 0;
-// 		border-radius: inherit;
-// 		padding: 0.0844rem;
-// 		background: linear-gradient(117.87deg, #dadada 0%, rgba(218, 218, 218, 0.07) 41.761%, #dadada 100%);
-// 		-webkit-mask:
-// 			linear-gradient(#fff 0 0) content-box,
-// 			linear-gradient(#fff 0 0);
-// 		mask:
-// 			linear-gradient(#fff 0 0) content-box,
-// 			linear-gradient(#fff 0 0);
-// 		-webkit-mask-composite: xor;
-// 		mask-composite: exclude;
-// 		pointer-events: none;
-// 		z-index: 2;
-// 		transition: background 0.3s ease;
-// 	}
-
-// 	> * {
-// 		position: relative;
-// 		z-index: 1;
-// 	}
-
-// 	&__image {
-// 		position: relative;
-// 		flex: 0 0 auto;
-// 		display: flex;
-// 		align-items: center;
-// 		justify-content: center;
-// 		height: 240px;
-// 		margin-bottom: 0.75rem;
-
-// 		&::before {
-// 			content: "";
-// 			position: absolute;
-// 			width: 85%;
-// 			aspect-ratio: 1 / 1;
-// 			top: 50%;
-// 			left: 50%;
-// 			transform: translate(-50%, -50%);
-// 			border-radius: 50%;
-// 			background: var(--background-gradient);
-// 			z-index: 0;
-// 		}
-
-// 		img {
-// 			position: relative;
-// 			z-index: 1;
-// 			width: auto;
-// 			height: auto;
-// 			object-fit: contain;
-// 			filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.6));
-// 			transition: scale 0.5s;
-
-// 			&:hover {
-// 				scale: 1.02;
-// 			}
-// 		}
-// 	}
-
-// 	&__body {
-// 		display: flex;
-// 		flex-direction: column;
-// 		flex: 1 1 auto;
-// 		width: 100%;
-// 	}
-
-// 	&__header {
-// 		flex: 1 1 auto;
-// 		display: flex;
-// 		flex-direction: column;
-// 		justify-content: center;
-// 		margin-bottom: 0.4375rem;
-// 	}
-
-// 	&__title {
-// 		font-size: 32px;
-// 		line-height: 1.3;
-// 		letter-spacing: -0.02em;
-// 		color: var(--white);
-// 		transition: color 0.5s ease;
-
-// 		&:hover {
-// 			color: #35c66b; // Просто зеленый цвет из градиента
-// 		}
-
-// 		&:not(:last-child) {
-// 			margin-bottom: 18px;
-// 		}
-// 	}
-
-// 	&__text {
-// 		font-size: 1.25rem;
-// 		line-height: 1.4;
-// 		letter-spacing: -0.02em;
-// 	}
-
-// 	&__footer {
-// 		margin-top: auto;
-// 		display: flex;
-// 		flex-direction: column;
-// 		align-items: center;
-// 		gap: 0.75rem;
-// 		width: 100%;
-// 	}
-
-// 	&__category {
-// 		display: flex;
-// 		justify-content: center;
-// 		align-items: flex-end;
-// 		gap: 1.5rem;
-// 		width: 100%;
-// 	}
-
-// 	&__button {
-// 		width: 100%;
-// 		max-width: 200px;
-// 	}
-// }
-
-// .category-our {
-// 	line-height: 1.63;
-// 	letter-spacing: -0.02em;
-
-// 	&__price {
-// 		font-weight: 500;
-// 		font-size: 2rem;
-// 		color: var(--white);
-// 	}
-
-// 	&__volume {
-// 		font-size: 1.25rem;
-// 	}
-// }
-
-// // Подсветка правого видимого слайда
-// .swiper-slide.is-last-visible {
-// 	.item-our::after {
-// 		background: var(--background-gradient);
-// 		padding: 0.125rem;
-// 	}
-// }
-
-// =========== our ============
-
 .our {
 	@include adaptive-value("padding-bottom", 100, 40, 0);
 
@@ -1184,6 +920,49 @@ body {
 		@media (max-width: 47.9988rem) {
 			flex-direction: column;
 			text-align: center;
+		}
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			border-radius: 50%;
+			pointer-events: none;
+			z-index: -1;
+
+			// Мягкое ядро БЕЗ резкой границы
+			background: radial-gradient(
+				circle,
+				rgba(53, 198, 107, 0.55) 0%,
+				rgba(53, 198, 107, 0.35) 20%,
+				rgba(53, 198, 107, 0) 55%
+			);
+
+			filter: blur(80px); // ← уменьши радиус, если было 175
+			transform: translateZ(0); // ← форс GPU-слоя
+			backface-visibility: hidden;
+			@media (max-width: 47.9988rem) {
+				display: none;
+			} // ← убирает лишние перерисовки
+		}
+
+		&::before {
+			width: 24rem;
+			height: 24rem;
+			top: 40%;
+			right: 25%;
+		}
+
+		&::after {
+			width: 22rem;
+			height: 22rem;
+			top: 40%;
+			left: 0%;
+			background: radial-gradient(
+				circle,
+				rgba(217, 217, 217, 0.4) 0%,
+				rgba(217, 217, 217, 0.2) 30%,
+				rgba(217, 217, 217, 0) 45%
+			);
 		}
 	}
 
@@ -1213,15 +992,36 @@ body {
 	}
 
 	&__controls {
-		// По умолчанию — flex-элемент внутри .our__inner-container,
-		// поэтому gap работает. На мобильных уходит вниз.
 		flex-shrink: 0;
+		&::before {
+			content: "";
+			position: absolute;
+			border-radius: 50%;
+			pointer-events: none;
+			z-index: -1;
 
-		// @media (max-width: 47.9988rem) {
-		// 	margin-top: 1.875rem;
-		// 	text-align: center;			// align-self: center;
-		// 	margin-right: 54px;
-		// }
+			// Мягкое ядро БЕЗ резкой границы
+			background: radial-gradient(
+				circle,
+				rgba(53, 198, 107, 0.55) 0%,
+				rgba(53, 198, 107, 0.35) 20%,
+				rgba(53, 198, 107, 0) 35%
+			);
+
+			filter: blur(80px); // ← уменьши радиус, если было 175
+			transform: translateZ(0); // ← форс GPU-слоя
+			backface-visibility: hidden;
+			@media (max-width: 47.9988rem) {
+				display: none;
+			} // ← убирает лишние перерисовки
+		}
+
+		&::before {
+			width: 24rem;
+			height: 24rem;
+			top: 40%;
+			right: 8%;
+		}
 	}
 
 	&__arrow {
@@ -1272,6 +1072,49 @@ body {
 .our-block {
 	&__header {
 		@include adaptive-value("margin-bottom", 54, 30, 0);
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			border-radius: 50%;
+			pointer-events: none;
+			z-index: -1;
+
+			// Мягкое ядро БЕЗ резкой границы
+			background: radial-gradient(
+				circle,
+				rgba(53, 198, 107, 0.55) 0%,
+				rgba(53, 198, 107, 0.35) 20%,
+				rgba(53, 198, 107, 0) 55%
+			);
+
+			filter: blur(80px); // ← уменьши радиус, если было 175
+			transform: translateZ(0); // ← форс GPU-слоя
+			backface-visibility: hidden;
+			@media (max-width: 47.9988rem) {
+				display: none;
+			} // ← убирает лишние перерисовки
+		}
+
+		&::before {
+			width: 24rem;
+			height: 24rem;
+			top: -15%;
+			right: 65%;
+		}
+
+		&::after {
+			width: 22rem;
+			height: 22rem;
+			top: 25%;
+			left: 23%;
+			background: radial-gradient(
+				circle,
+				rgba(217, 217, 217, 0.4) 0%,
+				rgba(217, 217, 217, 0.2) 30%,
+				rgba(217, 217, 217, 0) 45%
+			);
+		}
 	}
 }
 
@@ -1477,75 +1320,123 @@ body {
 		padding: 0.125rem;
 	}
 }
-// .item-our {
-// 	position: relative;
-// 	display: flex;
-// 	flex-direction: column;
-// 	align-items: center;
-// 	text-align: center;
 
-// 	width: 277px;
-// 	height: 554px;
-// 	box-sizing: border-box;
+// ========== events ===========
 
-// 	padding: 17px 20px 24px;
-// 	border-radius: 1.8125rem;
-// 	background: transparent;
+.events {
+	&__container {
+		position: relative;
+	}
 
-// 	// Базовый серый бордер
-// 	&::after {
-// 		content: "";
-// 		position: absolute;
-// 		inset: 0;
-// 		border-radius: inherit;
-// 		padding: 0.0844rem;
-// 		background: linear-gradient(117.87deg, #dadada 0%, rgba(218, 218, 218, 0.07) 41.761%, #dadada 100%);
-// 		-webkit-mask:
-// 			linear-gradient(#fff 0 0) content-box,
-// 			linear-gradient(#fff 0 0);
-// 		mask:
-// 			linear-gradient(#fff 0 0) content-box,
-// 			linear-gradient(#fff 0 0);
-// 		-webkit-mask-composite: xor;
-// 		mask-composite: exclude;
-// 		pointer-events: none;
-// 		z-index: 2;
-// 	}
+	&__gallery {
+		display: grid;
+		gap: 20px;
 
-// 	// Градиентный бордер (ховер + активный)
-// 	&::before {
-// 		content: "";
-// 		position: absolute;
-// 		inset: 0;
-// 		border-radius: inherit;
-// 		padding: 0.125rem;
-// 		background: var(--background-gradient);
-// 		-webkit-mask:
-// 			linear-gradient(#fff 0 0) content-box,
-// 			linear-gradient(#fff 0 0);
-// 		mask:
-// 			linear-gradient(#fff 0 0) content-box,
-// 			linear-gradient(#fff 0 0);
-// 		-webkit-mask-composite: xor;
-// 		mask-composite: exclude;
-// 		pointer-events: none;
-// 		z-index: 3;
-// 		opacity: 0;
-// 		transition: opacity 0.4s ease;
-// 	}
+		// ===== ДЕСКТОП (≥ 992px): 6 колонок =====
+		grid-template-columns: repeat(6, 1fr);
 
-// 	&:hover::before {
-// 		opacity: 1;
-// 	}
+		// ===== ПЛАНШЕТ (768px – 991.98px): 2 колонки =====
+		@media (max-width: 61.9988rem) and (min-width: 47.9988rem) {
+			grid-template-columns: repeat(2, 1fr);
+		}
 
-// 	&.is-active::before {
-// 		opacity: 1;
-// 	}
+		// ===== МОБИЛЬНЫЕ (< 768px): 1 колонка =====
+		@media (max-width: 47.9988rem) {
+			grid-template-columns: 1fr;
+		}
+	}
+}
 
-// 	> * {
-// 		position: relative;
-// 		z-index: 1;
-// 	}
+.events-block {
+	&__header {
+		@include adaptive-value("margin-bottom", 54, 30, 0);
+	}
+}
 
-// 	// ...остальные стили __image, __body и т.д. без изменений
-// }
+.gallery-events {
+	&__item {
+		position: relative;
+		border-radius: 1.875rem;
+		overflow: hidden;
+		min-height: 300px;
+		isolation: isolate;
+		transform: translateZ(0);
+		cursor: pointer;
+
+		// ===== ДЕСКТОП (≥ 992px): 2 сверху, 3 снизу =====
+		&:nth-child(1),
+		&:nth-child(2) {
+			grid-column: span 3;
+		}
+
+		&:nth-child(3),
+		&:nth-child(4),
+		&:nth-child(5) {
+			grid-column: span 2;
+		}
+
+		// ХОВЕР: масштабируем картинку внутри
+		&:hover .gallery-events__image img {
+			transform: scale(1.05) translateZ(0);
+		}
+
+		// ===== ПЛАНШЕТ (768px – 991.98px): 2 карточки в ряд =====
+		@media (max-width: 61.9988rem) and (min-width: 47.9988rem) {
+			grid-column: span 1 !important; // все карточки занимают по 1 колонке
+		}
+
+		// ===== МОБИЛЬНЫЕ (< 768px): 1 карточка в ряд =====
+		@media (max-width: 47.9988rem) {
+			grid-column: auto !important;
+		}
+	}
+
+	&__content {
+		position: relative;
+		z-index: 1;
+		padding: 30px;
+	}
+
+	&__title {
+		font-weight: 500;
+		@include adaptive-value("font-size", 32, 24, 0);
+		line-height: 1.09;
+		color: var(--white);
+		margin-bottom: 1rem;
+		@include adaptive-value("margin-bottom", 44, 15, 0);
+	}
+
+	&__button {
+		color: var(--primary);
+		@include adaptive-value("padding-inline", 53, 20, 0);
+		display: inline-flex;
+		width: fit-content;
+		@media (max-width: 29.9988rem) {
+			// 479.98px
+			display: flex;
+			width: 100%;
+			justify-content: center;
+		}
+	}
+
+	&__image {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 0;
+		overflow: hidden;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+			transition: transform 0.5s ease;
+			will-change: transform;
+			backface-visibility: hidden;
+			transform: translateZ(0);
+		}
+	}
+}
