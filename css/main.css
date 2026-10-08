@@ -1428,12 +1428,15 @@ body {
   padding: 0.125rem;
 }
 
+.events {
+  padding-bottom: calc(40px + 60 * (100vw - 320px) / 1192);
+}
 .events__container {
   position: relative;
 }
 .events__gallery {
   display: grid;
-  gap: 20px;
+  gap: 1.25rem;
   grid-template-columns: repeat(6, 1fr);
 }
 @media (max-width: 61.9988rem) and (min-width: 47.9988rem) {
@@ -1446,19 +1449,102 @@ body {
     grid-template-columns: 1fr;
   }
 }
+.events__bg-decoration {
+  position: absolute;
+  top: 17%;
+  left: 10%;
+  width: 40%;
+  height: 40%;
+  transform: translate(-50%, -50%);
+  background: url("../images/events/events-bg.svg") center center no-repeat;
+  background-size: contain;
+  z-index: 0;
+  pointer-events: none;
+}
+@media (max-width: 47.9988rem) {
+  .events__bg-decoration {
+    width: 150%;
+    height: 150%;
+    opacity: 0.5;
+  }
+}
 
 .events-block__header {
   margin-bottom: calc(30px + 24 * (100vw - 320px) / 1192);
+  position: relative;
+}
+.events-block__header::before, .events-block__header::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(circle, rgba(53, 198, 107, 0.55) 0%, rgba(53, 198, 107, 0.35) 20%, rgba(53, 198, 107, 0) 55%);
+  filter: blur(80px);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+@media (max-width: 47.9988rem) {
+  .events-block__header::before, .events-block__header::after {
+    display: none;
+  }
+}
+.events-block__header::before {
+  width: 24rem;
+  height: 24rem;
+  top: 35%;
+  right: 35%;
+}
+.events-block__header::after {
+  width: 22rem;
+  height: 22rem;
+  top: 70%;
+  left: -5%;
+  background: radial-gradient(circle, rgba(217, 217, 217, 0.4) 0%, rgba(217, 217, 217, 0.2) 30%, rgba(217, 217, 217, 0) 45%);
 }
 
+.gallery-events {
+  position: relative;
+}
+.gallery-events::before, .gallery-events::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(circle, rgba(53, 198, 107, 0.55) 0%, rgba(53, 198, 107, 0.35) 20%, rgba(53, 198, 107, 0) 55%);
+  filter: blur(80px);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+@media (max-width: 47.9988rem) {
+  .gallery-events::before, .gallery-events::after {
+    display: none;
+  }
+}
+.gallery-events::before {
+  width: 24rem;
+  height: 24rem;
+  bottom: 0%;
+  right: -7%;
+}
+.gallery-events::after {
+  width: 22rem;
+  height: 22rem;
+  bottom: -10%;
+  left: 15%;
+  background: radial-gradient(circle, rgba(217, 217, 217, 0.4) 0%, rgba(217, 217, 217, 0.2) 40%, rgba(217, 217, 217, 0) 45%);
+}
 .gallery-events__item {
   position: relative;
   border-radius: 1.875rem;
   overflow: hidden;
-  min-height: 300px;
+  min-height: 18.75rem;
   isolation: isolate;
   transform: translateZ(0);
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 .gallery-events__item:nth-child(1), .gallery-events__item:nth-child(2) {
   grid-column: span 3;
@@ -1483,27 +1569,39 @@ body {
   position: relative;
   z-index: 1;
   padding: 30px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .gallery-events__title {
   font-weight: 500;
   font-size: calc(24px + 8 * (100vw - 320px) / 1192);
-  line-height: 1.09;
+  line-height: 1.2;
   color: var(--white);
   margin-bottom: 1rem;
   margin-bottom: calc(15px + 29 * (100vw - 320px) / 1192);
 }
+@media (max-width: 47.9988rem) {
+  .gallery-events__title {
+    text-align: center;
+  }
+  .gallery-events__title br {
+    display: none;
+  }
+}
 .gallery-events__button {
   color: var(--primary);
-  padding-inline: calc(20px + 33 * (100vw - 320px) / 1192);
+  padding-inline: 3.3125rem;
   display: inline-flex;
   width: -moz-fit-content;
   width: fit-content;
 }
-@media (max-width: 29.9988rem) {
+@media (max-width: 47.9988rem) {
   .gallery-events__button {
     display: flex;
     width: 100%;
     justify-content: center;
+    margin-top: auto;
   }
 }
 .gallery-events__image {
@@ -1525,4 +1623,5 @@ body {
   will-change: transform;
   backface-visibility: hidden;
   transform: translateZ(0);
+  scale: 1.01;
 }

@@ -1324,13 +1324,14 @@ body {
 // ========== events ===========
 
 .events {
+	@include adaptive-value("padding-bottom", 100, 40, 0);
 	&__container {
 		position: relative;
 	}
 
 	&__gallery {
 		display: grid;
-		gap: 20px;
+		gap: 1.25rem;
 
 		// ===== ДЕСКТОП (≥ 992px): 6 колонок =====
 		grid-template-columns: repeat(6, 1fr);
@@ -1345,23 +1346,133 @@ body {
 			grid-template-columns: 1fr;
 		}
 	}
+		&__bg-decoration {
+		position: absolute;
+		top: 17%;
+		left: 10%;
+		width: 40%; 
+		height: 40%;
+		transform: translate(-50%, -50%);
+		background: url("../images/events/events-bg.svg") center center no-repeat;
+		background-size: contain;
+		z-index: 0; // под стаканом
+		pointer-events: none;
+
+		@media (max-width: 47.9988rem) {
+			width: 150%;
+			height: 150%;
+			opacity: 0.5;
+		}
+	}
 }
 
 .events-block {
 	&__header {
 		@include adaptive-value("margin-bottom", 54, 30, 0);
+		position: relative;
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			border-radius: 50%;
+			pointer-events: none;
+			z-index: -1;
+
+			// Мягкое ядро БЕЗ резкой границы
+			background: radial-gradient(
+				circle,
+				rgba(53, 198, 107, 0.55) 0%,
+				rgba(53, 198, 107, 0.35) 20%,
+				rgba(53, 198, 107, 0) 55%
+			);
+
+			filter: blur(80px); // ← уменьши радиус, если было 175
+			transform: translateZ(0); // ← форс GPU-слоя
+			backface-visibility: hidden;
+			@media (max-width: 47.9988rem) {
+				display: none;
+			} // ← убирает лишние перерисовки
+		}
+
+		&::before {
+			width: 24rem;
+			height: 24rem;
+			top: 35%;
+			right: 35%;
+		}
+
+		&::after {
+			width: 22rem;
+			height: 22rem;
+			top: 70%;
+			left: -5%;
+			background: radial-gradient(
+				circle,
+				rgba(217, 217, 217, 0.4) 0%,
+				rgba(217, 217, 217, 0.2) 30%,
+				rgba(217, 217, 217, 0) 45%
+			);
+		}
 	}
 }
 
 .gallery-events {
+	position: relative;
+	&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			border-radius: 50%;
+			pointer-events: none;
+			z-index: -1;
+
+			// Мягкое ядро БЕЗ резкой границы
+			background: radial-gradient(
+				circle,
+				rgba(53, 198, 107, 0.55) 0%,
+				rgba(53, 198, 107, 0.35) 20%,
+				rgba(53, 198, 107, 0) 55%
+			);
+
+			filter: blur(80px); // ← уменьши радиус, если было 175
+			transform: translateZ(0); // ← форс GPU-слоя
+			backface-visibility: hidden;
+			@media (max-width: 47.9988rem) {
+				display: none;
+			} // ← убирает лишние перерисовки
+		}
+
+		&::before {
+			width: 24rem;
+			height: 24rem;
+			bottom: 0%;
+			right: -7%;
+		}
+
+		&::after {
+			width: 22rem;
+			height: 22rem;
+			bottom: -10%;
+			left: 15%;
+			background: radial-gradient(
+				circle,
+				rgba(217, 217, 217, 0.4) 0%,
+				rgba(217, 217, 217, 0.2) 40%,
+				rgba(217, 217, 217, 0) 45%
+			);
+		}
 	&__item {
 		position: relative;
 		border-radius: 1.875rem;
 		overflow: hidden;
-		min-height: 300px;
+		min-height: 18.75rem;
 		isolation: isolate;
 		transform: translateZ(0);
 		cursor: pointer;
+
+		// ДОБАВЛЕНО: чтобы контент мог растягиваться на всю высоту
+		display: flex;
+		flex-direction: column;
 
 		// ===== ДЕСКТОП (≥ 992px): 2 сверху, 3 снизу =====
 		&:nth-child(1),
@@ -1395,27 +1506,42 @@ body {
 		position: relative;
 		z-index: 1;
 		padding: 30px;
+
+		// ДОБАВЛЕНО: Flex-контейнер для распределения контента
+		display: flex;
+		flex-direction: column;
+		height: 100%; // Растягиваем на всю высоту родителя
 	}
 
 	&__title {
 		font-weight: 500;
 		@include adaptive-value("font-size", 32, 24, 0);
-		line-height: 1.09;
+		line-height: 1.2;
 		color: var(--white);
 		margin-bottom: 1rem;
 		@include adaptive-value("margin-bottom", 44, 15, 0);
+		@media (max-width: 47.9988rem) {
+			text-align: center;
+			br {
+				display: none;
+			}
+		}
 	}
 
 	&__button {
 		color: var(--primary);
-		@include adaptive-value("padding-inline", 53, 20, 0);
+		padding-inline: 3.3125rem;
 		display: inline-flex;
 		width: fit-content;
-		@media (max-width: 29.9988rem) {
+
+		@media (max-width: 47.9988rem) {
 			// 479.98px
 			display: flex;
 			width: 100%;
 			justify-content: center;
+
+			// ДОБАВЛЕНО: прижимает кнопку к низу
+			margin-top: auto;
 		}
 	}
 
@@ -1437,6 +1563,7 @@ body {
 			will-change: transform;
 			backface-visibility: hidden;
 			transform: translateZ(0);
+			scale: 1.01;
 		}
 	}
 }

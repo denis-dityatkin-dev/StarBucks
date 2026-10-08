@@ -2,7 +2,7 @@
   "workbench.colorTheme": "Dark+",
   "files.autoSave": "afterDelay",
   "editor.tabSize": 2,
-  "github-enterprise.uri": "https://github.com/denis-dityatkin-dev",
+  // "github-enterprise.uri": "https://github.com/denis-dityatkin-dev",
   "editor.insertSpaces": false,
   "editor.detectIndentation": false,
   "editor.formatOnSave": true,
