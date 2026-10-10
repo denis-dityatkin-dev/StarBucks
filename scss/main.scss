@@ -1346,11 +1346,11 @@ body {
 			grid-template-columns: 1fr;
 		}
 	}
-		&__bg-decoration {
+	&__bg-decoration {
 		position: absolute;
 		top: 17%;
 		left: 10%;
-		width: 40%; 
+		width: 40%;
 		height: 40%;
 		transform: translate(-50%, -50%);
 		background: url("../images/events/events-bg.svg") center center no-repeat;
@@ -1419,48 +1419,48 @@ body {
 .gallery-events {
 	position: relative;
 	&::before,
-		&::after {
-			content: "";
-			position: absolute;
-			border-radius: 50%;
-			pointer-events: none;
-			z-index: -1;
+	&::after {
+		content: "";
+		position: absolute;
+		border-radius: 50%;
+		pointer-events: none;
+		z-index: -1;
 
-			// Мягкое ядро БЕЗ резкой границы
-			background: radial-gradient(
-				circle,
-				rgba(53, 198, 107, 0.55) 0%,
-				rgba(53, 198, 107, 0.35) 20%,
-				rgba(53, 198, 107, 0) 55%
-			);
+		// Мягкое ядро БЕЗ резкой границы
+		background: radial-gradient(
+			circle,
+			rgba(53, 198, 107, 0.55) 0%,
+			rgba(53, 198, 107, 0.35) 20%,
+			rgba(53, 198, 107, 0) 55%
+		);
 
-			filter: blur(80px); // ← уменьши радиус, если было 175
-			transform: translateZ(0); // ← форс GPU-слоя
-			backface-visibility: hidden;
-			@media (max-width: 47.9988rem) {
-				display: none;
-			} // ← убирает лишние перерисовки
-		}
+		filter: blur(80px); // ← уменьши радиус, если было 175
+		transform: translateZ(0); // ← форс GPU-слоя
+		backface-visibility: hidden;
+		@media (max-width: 47.9988rem) {
+			display: none;
+		} // ← убирает лишние перерисовки
+	}
 
-		&::before {
-			width: 24rem;
-			height: 24rem;
-			bottom: 0%;
-			right: -7%;
-		}
+	&::before {
+		width: 24rem;
+		height: 24rem;
+		bottom: 0%;
+		right: -7%;
+	}
 
-		&::after {
-			width: 22rem;
-			height: 22rem;
-			bottom: -10%;
-			left: 15%;
-			background: radial-gradient(
-				circle,
-				rgba(217, 217, 217, 0.4) 0%,
-				rgba(217, 217, 217, 0.2) 40%,
-				rgba(217, 217, 217, 0) 45%
-			);
-		}
+	&::after {
+		width: 22rem;
+		height: 22rem;
+		bottom: -10%;
+		left: 15%;
+		background: radial-gradient(
+			circle,
+			rgba(217, 217, 217, 0.4) 0%,
+			rgba(217, 217, 217, 0.2) 40%,
+			rgba(217, 217, 217, 0) 45%
+		);
+	}
 	&__item {
 		position: relative;
 		border-radius: 1.875rem;
@@ -1566,4 +1566,133 @@ body {
 			scale: 1.01;
 		}
 	}
+}
+
+// ==========
+
+.contacts {
+	@include adaptive-value("padding-bottom", 100, 40, 0);
+	position: relative;
+	z-index: 2;
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center; /* выравнивание по центру */
+		gap: 1.25rem;
+		@media (max-width: 61.9988rem) {
+			flex-direction: column-reverse;
+			align-items: start;
+		}
+		@media (max-width: 47.9988rem) {
+			align-items: center;
+		}
+	}
+
+	&__content {
+	}
+
+	&__images {
+		position: relative;
+		z-index: 1;
+		flex: 0 0 34.25rem; // ← фиксированная ширина, не сжимается и не растёт
+		max-width: 34.25rem;
+		aspect-ratio: 548 / 754;
+
+		@media (max-width: 61.9988rem) {
+			flex: 1 1 auto; // на планшете может сжиматься
+			width: 100%;
+		}
+	}
+
+	&__bg-decoration {
+		position: absolute;
+		top: 23%; /* на какой высоте начинается */
+		right: -160%; /* сдвиг вправо от блока */
+		width: 200%; /* размер относительно блока */
+		height: 132%;
+		background: url("../images/contacts/bg-decoration-contacts.svg") center right no-repeat;
+		background-size: contain;
+		z-index: 0;
+		pointer-events: none;
+
+		@media (max-width: 61.9988rem) {
+			width: 180%;
+			top: 5%;
+			opacity: 0.5;
+		}
+		@media (max-width: 47.9988rem) {
+			right: -50%;
+			opacity: 0.3;
+		}
+	}
+}
+.content-contacts {
+	@media (min-width: 61.9988rem) {
+			max-width: 24.4375rem;
+		}
+	&__social {
+	}
+}
+.content-contacts-block {
+	&__header {
+		
+	}
+}
+
+.social-contacts {
+	&__instagram {
+	}
+
+	&__phone {
+	}
+}
+
+.images-contacts {
+  position: relative;
+  display: inline-block;
+  width: 465px;                    // базовый размер
+  height: 684px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__item {
+    position: absolute;
+  }
+
+  /* Клякса-декор — верхний слой, справа сверху */
+  &__item-1 {
+    top: -3%;
+    left: 5%;
+    @include adaptive-value("width", 245, 150, 0);
+    @include adaptive-value("height", 245, 150, 0);
+    z-index: 3;
+    animation: figure-pulse 3s ease-in-out infinite;
+    transform-origin: 50% 50%;
+    will-change: transform;
+    filter: drop-shadow(-4px 13px 22px rgba(20, 62, 40, 0.46));
+  }
+
+  /* Главное фото кофейни — средний слой */
+  &__item-2 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    clip-path: polygon(0 0, 85% 0, 100% 15%, 100% 100%, 0 100%);
+  }
+
+  /* Зелёный фон — нижний слой, сдвинут влево-вверх */
+  &__item-3 {
+    top: 10%;      /* поднимите/опустите по вкусу */
+    right: 1%;     /* сдвиг влево */
+    width: 80%;
+    height: 83%;
+    z-index: 1;
+  }
 }
