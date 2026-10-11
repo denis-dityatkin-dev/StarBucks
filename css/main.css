@@ -374,9 +374,11 @@ body {
   --primary: #d9d9d9;
   --white: #fff;
   --background: #121517;
+  --background-footer: #0b0c0d;
   --background-gradient: linear-gradient(263.46deg, #237249 1.41%, #35c66b 85.05%);
   --background-white: linear-gradient(264.52deg, #fff 5.07%, #e5e5e5 64.2%, #fbfbfb 88.34%);
   --color-text: rgba(18, 21, 23, 0.9);
+  --green-hover: #35c66b;
 }
 
 body {
@@ -444,7 +446,7 @@ body {
   color: var(--primary);
 }
 .menu-header__item a:hover {
-  color: #35c66b;
+  color: var(--green-hover);
 }
 @media (max-width: 47.9988rem) {
   .menu-header__item {
@@ -1640,7 +1642,7 @@ body {
 @media (max-width: 61.9988rem) {
   .contacts__container {
     flex-direction: column-reverse;
-    align-items: start;
+    align-items: end;
   }
 }
 @media (max-width: 47.9988rem) {
@@ -1663,10 +1665,10 @@ body {
 }
 .contacts__bg-decoration {
   position: absolute;
-  top: 23%; /* на какой высоте начинается */
-  right: -160%; /* сдвиг вправо от блока */
+  top: -30%; /* на какой высоте начинается */
+  right: -20%; /* сдвиг вправо от блока */
   width: 200%; /* размер относительно блока */
-  height: 132%;
+  height: 250%;
   background: url("../images/contacts/bg-decoration-contacts.svg") center right no-repeat;
   background-size: contain;
   z-index: 0;
@@ -1674,15 +1676,18 @@ body {
 }
 @media (max-width: 61.9988rem) {
   .contacts__bg-decoration {
-    width: 180%;
-    top: 5%;
+    width: 240%;
+    height: 150%;
+    top: -30%;
+    right: -20%;
+    transform: rotate(45deg);
     opacity: 0.5;
   }
 }
 @media (max-width: 47.9988rem) {
   .contacts__bg-decoration {
-    right: -50%;
     opacity: 0.3;
+    right: -50%;
   }
 }
 
@@ -1691,11 +1696,104 @@ body {
     max-width: 24.4375rem;
   }
 }
+.content-contacts-block__header {
+  margin-bottom: calc(30px + 26 * (100vw - 320px) / 1192);
+}
+@media (max-width: 61.9988rem) {
+  .content-contacts-block__header br {
+    display: none;
+  }
+}
+.content-contacts-block__header {
+  position: relative;
+}
+.content-contacts-block__header::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(circle, rgba(53, 198, 107, 0.55) 0%, rgba(53, 198, 107, 0.35) 20%, rgba(53, 198, 107, 0) 55%);
+  filter: blur(80px);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+@media (max-width: 47.9988rem) {
+  .content-contacts-block__header::before {
+    display: none;
+  }
+}
+.content-contacts-block__header::before {
+  width: 24rem;
+  height: 24rem;
+  top: 25%;
+  left: 0%;
+}
+
+.social-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: calc(15px + 24 * (100vw - 320px) / 1192);
+}
+.social-contacts__item {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  font-weight: 500;
+  font-size: calc(24px + 8 * (100vw - 320px) / 1192);
+  line-height: 1.32;
+  color: var(--white);
+  transition: color 0.5s;
+}
+.social-contacts__item:hover {
+  color: var(--green-hover);
+}
+.social-contacts__item::before {
+  font-size: calc(32px + 12 * (100vw - 320px) / 1192);
+  background: var(--background-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
 .images-contacts {
   position: relative;
   display: inline-block;
-  width: 465px;
-  height: 684px;
+}
+@media (min-width: 61.9988rem) {
+  .images-contacts {
+    width: 465px;
+    height: 684px;
+  }
+}
+.images-contacts::before, .images-contacts::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(circle, rgba(53, 198, 107, 0.55) 0%, rgba(53, 198, 107, 0.35) 20%, rgba(53, 198, 107, 0) 55%);
+  filter: blur(80px);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+@media (max-width: 47.9988rem) {
+  .images-contacts::before, .images-contacts::after {
+    display: none;
+  }
+}
+.images-contacts::before {
+  width: 24rem;
+  height: 24rem;
+  top: 0%;
+  right: 45%;
+}
+.images-contacts::after {
+  width: 22rem;
+  height: 22rem;
+  top: 80%;
+  right: 0%;
+  background: radial-gradient(circle, rgba(217, 217, 217, 0.4) 0%, rgba(217, 217, 217, 0.2) 30%, rgba(217, 217, 217, 0) 45%);
 }
 .images-contacts img {
   display: block;
@@ -1706,6 +1804,9 @@ body {
 }
 .images-contacts__item {
   position: absolute;
+}
+.images-contacts__item img {
+  max-width: 100%;
 }
 .images-contacts {
   /* Клякса-декор — верхний слой, справа сверху */
@@ -1720,6 +1821,11 @@ body {
   transform-origin: 50% 50%;
   will-change: transform;
   filter: drop-shadow(-4px 13px 22px rgba(20, 62, 40, 0.46));
+}
+@media (max-width: 61.9988rem) {
+  .images-contacts__item-1 {
+    top: 3%;
+  }
 }
 .images-contacts {
   /* Главное фото кофейни — средний слой */
@@ -1741,4 +1847,30 @@ body {
   width: 80%;
   height: 83%;
   z-index: 1;
+}
+
+.footer {
+  background-color: var(--background-footer);
+  z-index: 2;
+  padding-inline: calc(0px + 121 * (100vw - 320px) / 1192);
+  padding-block: calc(20px + 18 * (100vw - 320px) / 1192);
+}
+.footer__body {
+  display: flex;
+  gap: calc(20px + 88 * (100vw - 320px) / 1192);
+}
+.footer__social {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.body-footer__items {
+  display: flex;
+  gap: calc(20px + 62 * (100vw - 320px) / 1192);
+}
+@media (max-width: 61.9988rem) {
+  .body-footer__items {
+    flex-wrap: wrap;
+  }
 }

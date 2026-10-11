@@ -32,9 +32,11 @@ $maxWidthContainer: 1325;
 	--primary: #d9d9d9;
 	--white: #fff;
 	--background: #121517;
+	--background-footer: #0b0c0d;
 	--background-gradient: linear-gradient(263.46deg, #237249 1.41%, #35c66b 85.05%);
 	--background-white: linear-gradient(264.52deg, #fff 5.07%, #e5e5e5 64.2%, #fbfbfb 88.34%);
 	--color-text: rgba(18, 21, 23, 0.9);
+	--green-hover: #35c66b;
 }
 
 body {
@@ -126,7 +128,7 @@ body {
 			color: var(--primary); // Ваш обычный цвет
 
 			&:hover {
-				color: #35c66b; // Просто зеленый цвет из градиента
+				color: var(--green-hover); // Просто зеленый цвет из градиента
 			}
 		}
 		@media (max-width: 47.9988rem) {
@@ -1568,7 +1570,7 @@ body {
 	}
 }
 
-// ==========
+// ========== contacts ========
 
 .contacts {
 	@include adaptive-value("padding-bottom", 100, 40, 0);
@@ -1581,7 +1583,7 @@ body {
 		gap: 1.25rem;
 		@media (max-width: 61.9988rem) {
 			flex-direction: column-reverse;
-			align-items: start;
+			align-items: end;
 		}
 		@media (max-width: 47.9988rem) {
 			align-items: center;
@@ -1606,40 +1608,106 @@ body {
 
 	&__bg-decoration {
 		position: absolute;
-		top: 23%; /* на какой высоте начинается */
-		right: -160%; /* сдвиг вправо от блока */
+		top: -30%; /* на какой высоте начинается */
+		right: -20%; /* сдвиг вправо от блока */
 		width: 200%; /* размер относительно блока */
-		height: 132%;
+		height: 250%;
 		background: url("../images/contacts/bg-decoration-contacts.svg") center right no-repeat;
 		background-size: contain;
 		z-index: 0;
 		pointer-events: none;
 
 		@media (max-width: 61.9988rem) {
-			width: 180%;
-			top: 5%;
+			width: 240%;
+			height: 150%;
+			top: -30%;
+			right: -20%;
+			transform: rotate(45deg);
 			opacity: 0.5;
 		}
 		@media (max-width: 47.9988rem) {
-			right: -50%;
 			opacity: 0.3;
+			right: -50%;
 		}
 	}
 }
 .content-contacts {
 	@media (min-width: 61.9988rem) {
-			max-width: 24.4375rem;
-		}
+		max-width: 24.4375rem;
+	}
 	&__social {
 	}
 }
 .content-contacts-block {
 	&__header {
-		
+		@include adaptive-value("margin-bottom", 56, 30, 0);
+		br {
+			@media (max-width: 61.9988rem) {
+				display: none;
+			}
+		}
+			position: relative;
+		&::before {
+			content: "";
+			position: absolute;
+			border-radius: 50%;
+			pointer-events: none;
+			z-index: -1;
+
+			// Мягкое ядро БЕЗ резкой границы
+			background: radial-gradient(
+				circle,
+				rgba(53, 198, 107, 0.55) 0%,
+				rgba(53, 198, 107, 0.35) 20%,
+				rgba(53, 198, 107, 0) 55%
+			);
+
+			filter: blur(80px); // ← уменьши радиус, если было 175
+			transform: translateZ(0); // ← форс GPU-слоя
+			backface-visibility: hidden;
+			@media (max-width: 47.9988rem) {
+				display: none;
+			} // ← убирает лишние перерисовки
+		}
+
+		&::before {
+			width: 24rem;
+			height: 24rem;
+			top: 25%;
+			left: 0%;
+		}
+
 	}
 }
 
 .social-contacts {
+	display: flex;
+	flex-direction: column;
+	@include adaptive-value("gap", 39, 15, 0);
+	&__item {
+		display: flex;
+		align-items: center;
+		gap: 0.875rem;
+
+		font-weight: 500;
+		@include adaptive-value("font-size", 32, 24, 0);
+		line-height: 1.32;
+		color: var(--white);
+
+		transition: color 0.5s;
+		&:hover {
+			color: var(--green-hover);
+		}
+		&::before {
+			@include adaptive-value("font-size", 44, 32, 0);
+
+			background: var(--background-gradient);
+			-webkit-background-clip: text;
+			background-clip: text;
+			-webkit-text-fill-color: transparent;
+			color: transparent; // фолбэк
+		}
+	}
 	&__instagram {
 	}
 
@@ -1648,51 +1716,163 @@ body {
 }
 
 .images-contacts {
-  position: relative;
-  display: inline-block;
-  width: 465px;                    // базовый размер
-  height: 684px;
+	position: relative;
+	display: inline-block;
 
-  img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
+	@media (min-width: 61.9988rem) {
+		width: 465px; // базовый размер
+		height: 684px;
+	}
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			border-radius: 50%;
+			pointer-events: none;
+			z-index: -1;
 
-  &__item {
-    position: absolute;
-  }
+			// Мягкое ядро БЕЗ резкой границы
+			background: radial-gradient(
+				circle,
+				rgba(53, 198, 107, 0.55) 0%,
+				rgba(53, 198, 107, 0.35) 20%,
+				rgba(53, 198, 107, 0) 55%
+			);
 
-  /* Клякса-декор — верхний слой, справа сверху */
-  &__item-1 {
-    top: -3%;
-    left: 5%;
-    @include adaptive-value("width", 245, 150, 0);
-    @include adaptive-value("height", 245, 150, 0);
-    z-index: 3;
-    animation: figure-pulse 3s ease-in-out infinite;
-    transform-origin: 50% 50%;
-    will-change: transform;
-    filter: drop-shadow(-4px 13px 22px rgba(20, 62, 40, 0.46));
-  }
+			filter: blur(80px); // ← уменьши радиус, если было 175
+			transform: translateZ(0); // ← форс GPU-слоя
+			backface-visibility: hidden;
+			@media (max-width: 47.9988rem) {
+				display: none;
+			} // ← убирает лишние перерисовки
+		}
 
-  /* Главное фото кофейни — средний слой */
-  &__item-2 {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    clip-path: polygon(0 0, 85% 0, 100% 15%, 100% 100%, 0 100%);
-  }
+		&::before {
+			width: 24rem;
+			height: 24rem;
+			top: 0%;
+			right: 45%;
+		}
 
-  /* Зелёный фон — нижний слой, сдвинут влево-вверх */
-  &__item-3 {
-    top: 10%;      /* поднимите/опустите по вкусу */
-    right: 1%;     /* сдвиг влево */
-    width: 80%;
-    height: 83%;
-    z-index: 1;
-  }
+		&::after {
+			width: 22rem;
+			height: 22rem;
+			top: 80%;
+			right: 0%;
+			background: radial-gradient(
+				circle,
+				rgba(217, 217, 217, 0.4) 0%,
+				rgba(217, 217, 217, 0.2) 30%,
+				rgba(217, 217, 217, 0) 45%
+			);
+		}
+
+	img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+
+	&__item {
+		position: absolute;
+		img {
+			max-width: 100%;
+		}
+	}
+
+	/* Клякса-декор — верхний слой, справа сверху */
+	&__item-1 {
+		top: -3%;
+		left: 5%;
+		@include adaptive-value("width", 245, 150, 0);
+		@include adaptive-value("height", 245, 150, 0);
+		z-index: 3;
+		animation: figure-pulse 3s ease-in-out infinite;
+		transform-origin: 50% 50%;
+		will-change: transform;
+		filter: drop-shadow(-4px 13px 22px rgba(20, 62, 40, 0.46));
+		@media (max-width: 61.9988rem) {
+			top: 3%;
+		}
+	}
+
+	/* Главное фото кофейни — средний слой */
+	&__item-2 {
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+		clip-path: polygon(0 0, 85% 0, 100% 15%, 100% 100%, 0 100%);
+	}
+
+	/* Зелёный фон — нижний слой, сдвинут влево-вверх */
+	&__item-3 {
+		top: 10%; /* поднимите/опустите по вкусу */
+		right: 1%; /* сдвиг влево */
+		width: 80%;
+		height: 83%;
+		z-index: 1;
+	}
 }
+
+// ========== footer ========
+
+.footer {
+	background-color: var(--background-footer);
+	z-index: 2;
+	@include adaptive-value("padding-inline", 121, 0, 0);
+	@include adaptive-value("padding-block", 38, 20, 0);
+
+		&__container {
+
+		}
+
+		&__body {
+			display: flex;
+			@include adaptive-value("gap", 108, 20, 0);
+		}
+
+		&__social {
+			display: flex;
+			justify-content: space-between;
+			gap: 1.25rem;
+		}
+}
+.body-footer {
+
+		&__logo {
+		}
+
+		&__items {
+			display: flex;
+			@include adaptive-value("gap", 82, 20, 0);
+			@media (max-width: 61.9988rem){
+				flex-wrap: wrap;
+			}
+		}
+
+		&__item {
+		}
+
+		&__title {
+		}
+
+		&__link {
+		}
+
+		&__link-title {
+		}
+
+		&__arrow {
+		}
+}
+
+.social-footer {
+
+		&__item {
+		}
+}
+
+

@@ -46,7 +46,7 @@ function windowLoad(){
 					digitsCountersInit(digitsCountersItems);
 				}
 				// Выключить отслеживание после срабатывания
-				observer.unobserve(targetElement);
+				// observer.unobserve(targetElement);
 			}
 		});
 	}, options);
