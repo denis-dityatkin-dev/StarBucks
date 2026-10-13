@@ -31,6 +31,8 @@ $maxWidthContainer: 1325;
 	--font-family: "Montserrat", sans-serif;
 	--primary: #d9d9d9;
 	--white: #fff;
+	--spoller-title: #bbb3b3;
+	--spoller-link: rgba(187, 179, 179, 0.43);
 	--background: #121517;
 	--background-footer: #0b0c0d;
 	--background-gradient: linear-gradient(263.46deg, #237249 1.41%, #35c66b 85.05%);
@@ -1646,7 +1648,7 @@ body {
 				display: none;
 			}
 		}
-			position: relative;
+		position: relative;
 		&::before {
 			content: "";
 			position: absolute;
@@ -1676,7 +1678,6 @@ body {
 			top: 25%;
 			left: 0%;
 		}
-
 	}
 }
 
@@ -1723,49 +1724,49 @@ body {
 		width: 465px; // базовый размер
 		height: 684px;
 	}
-		&::before,
-		&::after {
-			content: "";
-			position: absolute;
-			border-radius: 50%;
-			pointer-events: none;
-			z-index: -1;
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		border-radius: 50%;
+		pointer-events: none;
+		z-index: -1;
 
-			// Мягкое ядро БЕЗ резкой границы
-			background: radial-gradient(
-				circle,
-				rgba(53, 198, 107, 0.55) 0%,
-				rgba(53, 198, 107, 0.35) 20%,
-				rgba(53, 198, 107, 0) 55%
-			);
+		// Мягкое ядро БЕЗ резкой границы
+		background: radial-gradient(
+			circle,
+			rgba(53, 198, 107, 0.55) 0%,
+			rgba(53, 198, 107, 0.35) 20%,
+			rgba(53, 198, 107, 0) 55%
+		);
 
-			filter: blur(80px); // ← уменьши радиус, если было 175
-			transform: translateZ(0); // ← форс GPU-слоя
-			backface-visibility: hidden;
-			@media (max-width: 47.9988rem) {
-				display: none;
-			} // ← убирает лишние перерисовки
-		}
+		filter: blur(80px); // ← уменьши радиус, если было 175
+		transform: translateZ(0); // ← форс GPU-слоя
+		backface-visibility: hidden;
+		@media (max-width: 47.9988rem) {
+			display: none;
+		} // ← убирает лишние перерисовки
+	}
 
-		&::before {
-			width: 24rem;
-			height: 24rem;
-			top: 0%;
-			right: 45%;
-		}
+	&::before {
+		width: 24rem;
+		height: 24rem;
+		top: 0%;
+		right: 45%;
+	}
 
-		&::after {
-			width: 22rem;
-			height: 22rem;
-			top: 80%;
-			right: 0%;
-			background: radial-gradient(
-				circle,
-				rgba(217, 217, 217, 0.4) 0%,
-				rgba(217, 217, 217, 0.2) 30%,
-				rgba(217, 217, 217, 0) 45%
-			);
-		}
+	&::after {
+		width: 22rem;
+		height: 22rem;
+		top: 80%;
+		right: 0%;
+		background: radial-gradient(
+			circle,
+			rgba(217, 217, 217, 0.4) 0%,
+			rgba(217, 217, 217, 0.2) 30%,
+			rgba(217, 217, 217, 0) 45%
+		);
+	}
 
 	img {
 		display: block;
@@ -1819,60 +1820,276 @@ body {
 
 // ========== footer ========
 
+// .footer {
+// 	background-color: var(--background-footer);
+// 	z-index: 2;
+// 	@include adaptive-value("padding-inline", 111, 0, 0);
+// 	@include adaptive-value("padding-block", 38, 20, 0);
+
+// 	&__container {
+// 		padding-inline: 0.625rem;
+// 		display: grid;
+// 		@include adaptive-value("gap", 89, 20, 0);
+// 	}
+
+// 	&__body {
+// 		display: flex;
+// 		@include adaptive-value("gap", 108, 20, 0);
+// 	}
+
+// 	&__social {
+// 		display: flex;
+// 		justify-content: space-between;
+// 		gap: 1.25rem;
+// 		@media (max-width: 29.9363rem) {
+// 			flex-direction: column;
+// 			justify-content: center;
+// 			align-items: center;
+// 		}
+// 	}
+// }
+// .body-footer {
+//     &__logo {
+//     }
+
+//     &__items {
+//         display: flex;
+//         @include adaptive-value("gap", 82, 20, 0);
+//         @media (max-width: 61.9988rem) {
+//             flex-wrap: wrap;
+//         }
+//     }
+
+//     &__item {
+//         @include adaptive-value("font-size", 20, 18, 0);
+//         letter-spacing: -0.01em;
+//     }
+
+//     &__title {
+//         color: var(--spoller-title);
+//         white-space: nowrap;
+//         &:not(:last-child) {
+//             margin-bottom: 0.5rem;
+//         }
+//         @media (max-width: 61.9988rem) {
+//             cursor: pointer;
+//         }
+//     }
+
+//     // Внешний блок — остаётся обычным block,
+//     // чтобы slide-анимация (height) работала корректно
+//     &__link {
+//         // ничего не меняем: display по умолчанию block
+//     }
+
+//     // Внутренний блок — здесь flex/grid с gap
+//     &__link-inner {
+//         display: flex;
+//         flex-direction: column;
+//         gap: 0.5rem;
+//     }
+
+//     &__link-title {
+// 			color: var(--spoller-link);
+//         transition: color 0.5s;
+//         &:hover {
+//             color: var(--white);
+//         }
+//     }
+
+//     &__arrow {
+//         display: inline-flex;
+//         transition: filter 0.5s ease;
+
+//         img {
+//             display: block;
+//             filter: drop-shadow(0 0 0 transparent);
+//             transition: filter 0.5s ease;
+//         }
+
+//         &:hover img {
+//             filter:
+//                 drop-shadow(0 0 6px var(--green-hover))
+//                 drop-shadow(0 0 16px var(--green-hover))
+//                 drop-shadow(0 0 28px rgba(0, 255, 128, 0.45));
+//         }
+//     }
+// }
 .footer {
-	background-color: var(--background-footer);
-	z-index: 2;
-	@include adaptive-value("padding-inline", 121, 0, 0);
-	@include adaptive-value("padding-block", 38, 20, 0);
+    background-color: var(--background-footer);
+    z-index: 2;
+    @include adaptive-value("padding-inline", 111, 0, 0);
+    @include adaptive-value("padding-block", 38, 20, 0);
+    overflow: hidden;
 
-		&__container {
+    &__container {
+        padding-inline: 0.625rem;
+        display: grid;
+        @include adaptive-value("gap", 89, 20, 0);
+        min-width: 0;
+        max-width: 100%;
+    }
 
-		}
+    &__body {
+        display: flex;
 
-		&__body {
-			display: flex;
-			@include adaptive-value("gap", 108, 20, 0);
-		}
+        @include adaptive-value("gap", 108, 20, 0);
+        min-width: 0;
 
-		&__social {
-			display: flex;
-			justify-content: space-between;
-			gap: 1.25rem;
-		}
+        // Колонка + центрирование на планшете/мобиле
+        @media (max-width: 61.9988rem) {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+    }
+
+    &__social {
+        display: flex;
+        justify-content: space-between;
+        gap: 1.25rem;
+        @media (max-width: 29.9363rem) {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
 }
+
 .body-footer {
+    &__logo {
+        flex: 0 0 auto;
+    }
 
-		&__logo {
+    // Убираем flex-wrap, разрешаем сжиматься
+   &__items {
+    display: flex;
+    flex: 1 1 auto;
+    min-width: 0;
+    @include adaptive-value("gap", 82, 20, 0);
+
+    // 991.98px и меньше — аккордеон в колонку
+    @media (max-width: 61.9988rem) {
+        width: 100%;
+    }
+
+    // 767.98px и меньше — снова строка + wrap
+    @media (max-width: 47.9988rem) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+    }
+		@media (max-width: 479.9808px){
+			flex-direction: column;
+			align-items: center;
 		}
 
-		&__items {
-			display: flex;
-			@include adaptive-value("gap", 82, 20, 0);
-			@media (max-width: 61.9988rem){
-				flex-wrap: wrap;
-			}
-		}
-
-		&__item {
-		}
-
-		&__title {
-		}
-
-		&__link {
-		}
-
-		&__link-title {
-		}
-
-		&__arrow {
-		}
 }
 
+&__item {
+    flex: 0 1 auto;
+    min-width: 0;
+    @include adaptive-value("font-size", 20, 18, 0);
+    letter-spacing: -0.01em;
+
+    // 991.98px и меньше — пункт на всю ширину (аккордеон)
+    @media (max-width: 61.9988rem) {
+        width: 100%;
+        text-align: center;
+    }
+
+    // 767.98px и меньше — пункт снова по содержимому, чтобы wrap раскладывал их в ряды
+    @media (max-width: 47.9988rem) {
+        width: auto;
+        flex: 1 1 auto;
+        min-width: 8rem;   // подгони: минимальная ширина пункта, чтобы влезало 2 в ряд на телефоне
+    }
+}
+
+    &__title {
+        color: var(--spoller-title);
+        white-space: nowrap;
+        &:not(:last-child) {
+            margin-bottom: 0.5rem;
+        }
+        @media (max-width: 61.9988rem) {
+            cursor: pointer;
+        }
+    }
+
+    &__link {
+        // block по умолчанию
+    }
+
+    &__link-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        @media (max-width: 61.9988rem) {
+            align-items: center;
+        }
+    }
+
+    &__link-title {
+			white-space: nowrap;
+        color: var(--spoller-link);
+        transition: color 0.5s;
+        &:hover {
+            color: var(--white);
+        }
+    }
+
+    // Стрелка — жёстко фиксированного размера, не сжимается и не растягивается
+    &__arrow {
+        display: inline-flex;
+        flex: 0 0 auto;            // ключевое: не сжимается
+        width: 3.125rem;           // фикс. размер под твою иконку (подгони)
+        height: 3.125rem;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        transition: filter 0.5s ease;
+
+        @media (max-width: 61.9988rem) {
+            margin-left: 0;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 0 transparent);
+            transition: filter 0.5s ease;
+        }
+
+        &:hover img {
+            filter:
+                drop-shadow(0 0 6px var(--green-hover))
+                drop-shadow(0 0 16px var(--green-hover))
+                drop-shadow(0 0 28px rgba(0, 255, 128, 0.45));
+        }
+    }
+}
 .social-footer {
+	&__item {
+		&:first-child {
+			font-weight: 500;
+			font-size: 26px;
 
-		&__item {
+			background-image: var(--background-gradient);
+			background-clip: text;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
 		}
-}
+		// базовое состояние — прозрачная тень, чтобы transition работал плавно
+		filter: drop-shadow(0 0 0 transparent);
+		transition: filter 0.5s ease;
 
+		&:hover {
+			filter: drop-shadow(0 0 0.625rem var(--green-hover));
+		}
+	}
+}
 
