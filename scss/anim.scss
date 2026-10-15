@@ -1,0 +1,155 @@
+/* ================ Базовые keyframes ================== */
+@keyframes fadeRight {
+	0% { opacity: 0; transform: translate(-50%, 0%); }
+	100% { opacity: 1; transform: translate(0, 0); }
+}
+
+@keyframes fadeLeft {
+	0% { opacity: 0; transform: translate(50%, 0%); }
+	100% { opacity: 1; transform: translate(0, 0); }
+}
+
+@keyframes fadeUp {
+	0% { opacity: 0; transform: translate(0, 50%); }
+	100% { opacity: 1; transform: translate(0, 0); }
+}
+
+@keyframes fadeDown {
+	0% { opacity: 0; transform: translate(0, -50%); }
+	100% { opacity: 1; transform: translate(0, 0); }
+}
+
+@keyframes zoomIn {
+	0% { opacity: 0.5; transform: scale(0); }
+	100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes rotate {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+@keyframes rotate-rev {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(-360deg); }
+}
+
+@keyframes anti-rotate {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(-360deg); }
+}
+
+/* ================ Миксин для анимаций появления ================== */
+
+@mixin anim-appear($name, $start-transform, $duration: 1.5s, $start-opacity: 0) {
+	opacity: $start-opacity;
+	transform: $start-transform;
+
+	.--animate & {
+		animation: $name $duration forwards;
+	}
+}
+
+/* ================ Миксин для задержек ================== */
+@mixin anim-delays($count: 10, $start: 0.5s, $step: 0.2s) {
+	@for $i from 1 through $count {
+		&:nth-child(#{$i}) {
+			animation-delay: $start + ($i - 1) * $step;
+		}
+	}
+}
+
+/* ================ right ================== */
+.anim--right {
+	@include anim-appear(fadeRight, translate(-50%, 0%), 2s, 0);
+}
+
+/* ================ left ================== */
+.anim--left {
+	@include anim-appear(fadeLeft, translate(50%, 0%), 1.5s, 0);
+}
+
+/* ================ up ================== */
+.anim--up {
+	@include anim-appear(fadeUp, translate(0, 50%), 1.5s, 0);
+}
+
+/* ================ down ================== */
+.anim--down {
+	@include anim-appear(fadeDown, translate(0, -50%), 1.5s, 0);
+}
+
+/* ================ zoom ================== */
+.anim--zoom {
+	@include anim-appear(zoomIn, scale(0), 1.5s, 0.5);
+}
+
+/* =================== delay =================== */
+.anim--delay {
+	@include anim-appear(zoomIn, scale(0), 1.5s, 0.5);
+
+	// Индивидуальные задержки из исходника (не по формуле)
+	.--animate & {
+		&:nth-child(1) { animation-delay: 0s; }
+		&:nth-child(2) { animation-delay: 0.3s; }
+		&:nth-child(3) { animation-delay: 0.5s; }
+		&:nth-child(4) { animation-delay: 0.7s; }
+		&:nth-child(5) { animation-delay: 1.2s; }
+		&:nth-child(6) { animation-delay: 1.3s; }
+		&:nth-child(7) { animation-delay: 1.4s; }
+		&:nth-child(8) { animation-delay: 1.5s; }
+		&:nth-child(9) { animation-delay: 1.6s; }
+		&:nth-child(10) { animation-delay: 1.7s; }
+	}
+}
+
+/* =================== delay-up =================== */
+.anim--delay-up {
+	@include anim-appear(fadeUp, translate(0, 3.125rem), 1.5s, 0);
+
+	.--animate & {
+		@include anim-delays(10, 0.5s, 0.2s);
+	}
+}
+
+/* =================== delay-down =================== */
+.anim--delay-down {
+	@include anim-appear(fadeDown, translate(0, -3.125rem), 1.5s, 0);
+
+	.--animate & {
+		@include anim-delays(6, 0.5s, 0.2s);
+	}
+}
+
+/* =================== delay-left =================== */
+.anim--delay-left {
+	@include anim-appear(fadeLeft, translate(3.125rem, 0), 1.5s, 0);
+
+	.--animate & {
+		@include anim-delays(6, 0.5s, 0.2s);
+	}
+}
+
+/* =================== delay-right =================== */
+.anim--delay-right {
+	@include anim-appear(fadeRight, translate(-3.125rem, 0), 1.5s, 0);
+
+	.--animate & {
+		@include anim-delays(6, 0.5s, 0.2s);
+	}
+}
+
+/* =============== anim--rotate ================== */
+.anim--rotate {
+	animation: rotate 70s infinite linear !important;
+}
+
+/* =============== anim--rotate-rev ================== */
+.anim--rotate-rev {
+	animation: rotate-rev 70s infinite linear !important;
+}
+
+/* =============== anti-rotate ================== */
+.anti-rotate {
+	animation: anti-rotate 70s infinite linear;
+}
