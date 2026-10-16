@@ -1921,7 +1921,7 @@ body {
 		@media (max-width: 479.9808px) {
 			flex-direction: row;
 			flex-wrap: wrap;
-			justify-content: center;
+			justify-content: start;
 			align-items: flex-start;
 			gap: 1.25rem; // равномерный отступ между колонками
 		}
@@ -1964,23 +1964,65 @@ body {
 		@media (max-width: 61.9988rem) {
 			cursor: pointer;
 		}
+			width: 100%;
+			display: flex;
+			justify-content: flex-start;
+			align-items: start;
+
+			cursor: default;
+			padding-right: 2.5rem;
+			position: relative;
+			._init & {
+				cursor: pointer;
+				&::before,
+				&::after {
+					content: "";
+					position: absolute;
+					right: 0.625rem;
+					top: 50%;
+					background-color: var(--white);
+					height: 0.125rem;
+					width: 0.625rem;
+					transition: transform 0.5s ease 0s;
+				}
+				&::before {
+					transform: translate(-75%, -50%) rotate(40deg);
+				}
+				&::after {
+					transform: translate(0, -50%) rotate(-40deg);
+				}
+				&._active {
+					&::before {
+						transform: translateX(-75%) rotate(-40deg);
+					}
+					&::after {
+						transform: rotate(40deg);
+					}
+				}
+			}
+		
 	}
 
 	&__link {
+	
 		// block по умолчанию
 	}
 
 	&__link-inner {
+		
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
 
 		@media (max-width: 61.9988rem) {
-			align-items: center;
+			align-items: left;
+			text-align: left;
 		}
 	}
 
+		
 	&__link-title {
+		
 		white-space: nowrap;
 		color: var(--spoller-link);
 		transition: color 0.5s;
